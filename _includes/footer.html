@@ -1,0 +1,27 @@
+<footer class="footer">
+  <!-- <a class="footer_item" href="/thanks">ack.</a> -->
+  <!-- <a class="footer_item" href="javascript::void(0)">resume</a> -->
+  <!-- <a class="footer_item" href="/feed.xml">rss</a> -->
+  <a class="footer_item" href="https://github.com/djdongjin">github</a>
+  <span class="footer_item">&copy; {{ site.time | date: "%Y" }}</span>
+  <small class="footer_copyright">
+    Blog based on 
+    <a href="https://jekyllrb.com" target="_blank" rel="noreferrer noopener">jekyll</a>
+    theme - 
+    <a href="https://github.com/piharpi/jekyll-klise" target="_blank" rel="noreferrer noopener">
+    klisé
+    </a>
+  </small>
+</footer>
+<script src="/assets/js/main.js" defer="defer"></script>
+
+{%- if page.url == '/post/' -%}
+  <script src="/assets/js/search.min.js"></script>
+  <script>
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/assets/search.json',
+    });
+  </script>
+{%- endif -%}

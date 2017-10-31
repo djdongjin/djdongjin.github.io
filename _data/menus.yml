@@ -1,0 +1,23 @@
+- title: home
+  url: /
+  external: false
+
+- title: post
+  url: /post/
+  external: false
+
+- title: tag
+  url: /tags/
+  external: false
+
+- title: about
+  url: /about/
+  external: false
+
+- title: resume
+  url: /assets/JinDong_CV.pdf
+  external: false
+
+- title: github
+  url: https://github.com/djdongjin
+  external: true

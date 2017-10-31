@@ -1,0 +1,96 @@
+# Site settings
+title: Jin's Blog
+description: >- # site description
+  Hi, my name is Jin Dong. I am currently a software engineer @aws in New York City.
+lang: en-US # default lang
+timezone: America/New_York
+image: /assets/img/avatar.jpg # This image used for Open Graph more info https://ogp.me/
+repo: https://github.com/djdongjin/djdongjin.github.io
+mode: dark # default theme "dark" | "light"
+
+# Profile settings
+author:
+  name: Jin Dong
+  bio: >- # tell to the world
+    Hi, my name is Jin Dong. I am a software engineer @aws NYC, working on container and open source. 
+    I'm currently focusing on <a href="https://github.com/containerd/containerd" target="_blank" rel="noopener">containerd</a> 
+    and <a href="https://github.com/containerd/nerdctl" target="_blank" rel="noopener">nerdctl</a>.
+    You can find me <a href="https://github.com/djdongjin" target="_blank" rel="noopener">@github</a>.
+  username: djdongjin
+  github: djdongjin
+  # twitter: twitter_username
+  # facebook: facebook_username
+  email: djdongjin95@gmail.com
+  avatar: /assets/img/avatar.jpg
+
+# URL settings
+url: "https://djdongjin.github.io"
+baseurl: ""
+permalink: /:title
+google_analytics: # leave it blank if not wish
+fb_appid:
+
+# Collection setting
+collections:
+  posts:
+    output: true
+
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+  toc_levels: 1..3
+  # input: GFM
+  # auto_ids: true
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: post
+      comments: false
+
+# Jekyll Compose default front matter
+jekyll_compose:
+  post_default_front_matter:
+    modified:
+    tags: []
+    description:
+  draft_default_front_matter:
+    modified:
+    tags: []
+    description:
+
+# Homepage limit posts
+number_of_posts: 6
+
+# Build settings
+# theme: klise
+sass:
+  style: compressed
+
+include:
+  - _redirects
+  - .htaccess
+
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - CHANGELOG.md
+  - README.md
+  - node_modules
+  - CODE_OF_CONDUCT.md
+  - CONTRIBUTING.md
+  - lighthouse.png
+  - klise-*.gem
+  - klise.gemspec
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-postfiles
