@@ -10,13 +10,13 @@ categories: [Deep Learning, Machine Learning, PRML, Probability]
 
 ## 2.1. Binary Variables
 
-**Bernoulli distribution**: given $p(x=1|\mu)=\mu, 0 \leq \mu \leq \mu$, we have:
+**Bernoulli distribution**: given $p(x=1|\mu)=\mu$, $0 \leq \mu \leq \mu$, we have:
 
 $$\begin{aligned}
 Bern(x|\mu) &= \mu^x (1-\mu)^{1-x} \\
 E[x] &= \mu \\
 var[x] &= \mu (1-\mu)
-\end{aligned}$$
+\end{aligned}​$$
 
 Given a dataset $D={x_1,...x_n}$, the likelihood function is:
 
