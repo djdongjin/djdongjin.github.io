@@ -10,6 +10,8 @@ categories: [Deep Learning, Machine Learning, PRML, Probability]
 
 ## 2.1. Binary Variables
 
+
+
 **Bernoulli distribution**: given $p(x=1|\mu)=\mu$, $0 \leq \mu \leq \mu$, we have:
 
 $$\begin{aligned}
@@ -46,6 +48,8 @@ var[m] &= \sum_{m=0}^N (m-E[m])^2Bin(m|N,\mu) = N\mu (1-\mu).
 
 ### 2.1.1. Beta distribution
 
+
+
 **Problem of MLE for Bernoulli&Binomial**: if all observations of $x_i$ equal to 1, $\mu$ will equal to 1 as well by MLE, which obviously causes the overfitting.
 
 **Solution**: introduce a *prior distribution* $p(\mu)$ to do density estimation from the perspective of **Bayesian** treatment.
@@ -80,6 +84,8 @@ p(x=1|D) &= \int_0^1 p(x=1|\mu)p(\mu|D)d\mu = \int_0^1 \mu p(\mu|D) d\mu = E[\mu
 > Remember the expectation of beta distribution.
 
 ### 2.2. Multinomial Variables
+
+
 
 X can take one of K possible exclusive states instead of only two. Usually we represent x using one-hot encoder, a K-dimensional vector in which $x_k=1$ and all remaining equals to 0. Suppose we use $\mu_k$ to represent the probability of $x_k$, we have
 
