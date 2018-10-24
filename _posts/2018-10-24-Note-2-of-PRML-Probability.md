@@ -10,7 +10,7 @@ categories: [Deep Learning, Machine Learning, PRML, Probability]
 
 ## 2.1. Binary Variables
 
-**Bernoulli distribution**: given $p(x=1|\mu)=\mu, 0 \le \mu \le \mu$, we have:
+**Bernoulli distribution**: given $p(x=1|\mu)=\mu, 0 \leq \mu \leq \mu$, we have:
 
 $$\begin{aligned}
 Bern(x|\mu) &= \mu^x (1-\mu)^{1-x} \\
