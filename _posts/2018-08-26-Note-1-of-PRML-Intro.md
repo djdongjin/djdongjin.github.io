@@ -10,8 +10,6 @@ categories: [Deep Learning, Machine Learning]
 
 ## 1.1. Polynomial Curve Fitting
 
-
-
 *Linear models*: functions that are linear in the unknown parameters.
 
 The more flexible polynomials with larger values of power order, corresponding more complex models, are becoming increasingly tuned to the random noise on the target values, which reduce its generalization ability and cause **overfitting**.
@@ -22,8 +20,6 @@ For a given complex model, **overfitting** will become less severe with the incr
 **Regularization** is used to control overfitting by adding a penalty term to the loss function in order to discourage the coefficients/weights from reaching large values. The importance of regularization is controlled by hyper-parameter $\lambda$. The larger $\lambda$ the more penalty we add to the model, the more overfitting we reduced, which may even cause underfitting though.
 
 ## 1.2. Probability Theory
-
-
 
 *Three types of probabilities*: joint probability, marginal probability, conditional probability.
 
@@ -110,13 +106,9 @@ This phenomenon is called *bias* of MLE in which the true variance of observed d
 
 ## 1.3. Model Selection
 
-
-
 **S-fold Cross-validation**: partition data into *S* groups, each time  *S-1* groups were used for training and the remaining one was used for evaluation. Repeat *S* times and then average performance scores. When *S* equals N, size of data, called *leave-one-out*.
 
 ## 1.5. Decision Theory
-
-
 
 Getting an output given an input x and a trained model can be seen as two steps: **inference step**, in which we determine the joint distribution $p(x, t)$ by using training data to learn a model for $p(C_k|x)$; **decision step**, in which we make optimal decisions given the posterior probabilities.
 
@@ -124,6 +116,7 @@ Getting an output given an input x and a trained model can be seen as two steps:
 > In a decreasing order of complexity
 
 #### Generative models
+
 In inference step, determine the class-conditional densities $p(x|C_k)$ for each class $C_k$, then infer the prior class probabilities $p(C_k)$. Lastly use Bayes's theorem to find posterior class probabilities $p(C_k|x)$:
 
 $$\begin{align}
@@ -136,14 +129,14 @@ In decision step, we use decision theory to determine class membership. For inst
 It's called so if approaches model the distribution of inputs and outputs, because by sampling from them it's possible to generate synthetic data in input space.
 
 #### Discriminative models
+
 In inference step, determine the posterior class probabilities $p(C_k|x) **directly** (e.g. MLE), and then assign new x to a class using decision theory.
 
 #### No-probability models
+
 Find a discriminant function *f(x)* which maps input x directly to a class label, in which probabilities play no rule.
 
 ## 1.6. Information Theory
-
-
 
 We can see the information we received, given a value of a variable x, as the '**degree of surprise**' because, we will receive more information if we were told that an improbable event happened than if we were told that a very likely event happened (since we have known it will happen!).
 
