@@ -24,6 +24,7 @@ For a given complex model, **overfitting** will become less severe with the incr
 *Three types of probabilities*: joint probability, marginal probability, conditional probability.
 
 **Two rules of probabilities**:
+
 1. Sum rule: $P(X) = \sum_Y P(X, Y)$.
 2. Product rule: $P(X, Y) = P(Y|X)P(X)$.
 
@@ -32,6 +33,7 @@ For a given complex model, **overfitting** will become less severe with the incr
 2. Posterior probability: $P(Y|X)$, obtained after X is observed.
 
 **Expectation** of $f(x)$ is the average value of $f(x)$ under a probability distribution $p(x)$ as defined below:
+
 $$\begin{align}
 E[f] &= \sum_x p(x)f(x) \\
 E[f] &= \ p(x)f(x)dx    \\
@@ -40,33 +42,39 @@ E_x[f|y] &= \sum_x p(x|y)f(x).
 \end{align}$$
 
 **Variance** of $f(x)$ (or x itself) is the variability of $f(x)$ or x around its mean value $E[f]$:
+
 $$\begin{align}
 var[f] &= E[(f(x)-E[f(x)])^2] \\
-       &= E[f(x)^2] - E[f(x)]^2. \\
+​       &= E[f(x)^2] - E[f(x)]^2. \\
 var[x] &= E[x^2] - E[x]^2.
 \end{align}$$
 
 **Covariance** of x and y measures the extent of x and y vary together:
+
 $$\begin{align}
 cov[x, y] &= E_{x,y}[(x-E[x])(y-E[y])] \\
-          &= E_{x,y}[xy] - E[x]E[y]
+​          &= E_{x,y}[xy] - E[x]E[y]
 \end{align}$$
+
 The convariance of two vector $\textit{x}$ and $\textit{y}$ is a matrix computed by:
+
 $$\begin{align}
 cov[x, y] &= E_{x,y}[(x-E[x])(y^T-E[y^T])] \\
-          &= E_{x,y}[xy^T]-E[x]E[y^T].
-\end{align}$$
+​          &= E_{x,y}[xy^T]-E[x]E[y^T].
+\end{align}​$$
 
 **Gaussian distribution** is defined as follows by two parameters, mean $\mu$ and variance $\sigma^2$:
 $$
 G(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi}\sigma^2}\exp^{\frac{(x-\mu)^2}{2\sigma^2}}.
 $$
 Why parameters called mean and variance?
+
 $$\begin{align}
 E[x] &= \int{G(x|\mu, \sigma^2) x}dx = \mu. \\
 E[x^2] &= \int{G(x|\mu, \sigma^2) x^2}dx = \mu^2 + \sigma^2. \\
 var[x] &= E[x^2] - E[x]^2 = \sigma^2.
 \end{align}$$
+
 Gaussian distribution over D-dimensional vector $\textbf{x}$:
 $$
 G(\textbf{x}|\mu,\Sigma) = \frac{1}{(2\pi)^{D/2}|\Sigma|^{1/2}}\exp^{-\frac12(x-\mu)^T\Sigma^{-1}(x-\mu)}.
@@ -78,16 +86,20 @@ where mean $\mu$ is a D-dim vector, covariance $\Sigma$ is a D*D matrix.
 **Maximum likelihood (MLE)**: estimate parameter $w$ to the value that maximizes the likelihood function $p(D|w)$, (the prob that the observed data appears).
 
 *Drawback of MLE*: underestimate the variance of data. Suppose given n values of variable *x* sampled from a Gaussian distribution, $x=(x_1,...,x_n)$, our goal is find $\mu, \sigma^2$ satisfying:
+
 $$\begin{align}
 (\mu,\sigma^2) &= argmin_{\mu,\sigma^2}\sum_n \ln p(x_i|\mu,\sigma^2),\\
 \mu_{ML} &= \frac1N\sum_{n=1}{N}x_n, \\
 \sigma^2_{ML} &= \frac1N\sum_{n=1}{N}(x_n-\mu_{ML})^2,\\
 \end{align}$$
+
 Whereas
+
 $$\begin{align}
 E[\mu_{ML}] &= \mu, \\
 E[\sigma^2_{ML}] &= (\frac{N-1}{N}) \sigma^2.
 \end{align}$$
+
 This phenomenon is called *bias* of MLE in which the true variance of observed data is **underestimated**.
 
 **Maximum posterior (MAP)**: determine parameter $w$ by finding the most probable value of $w$ given data, in other words, by maximizing the *posterior distribution*.
@@ -105,6 +117,7 @@ Getting an output given an input x and a trained model can be seen as two steps:
 
 #### Generative models
 In inference step, determine the class-conditional densities $p(x|C_k)$ for each class $C_k$, then infer the prior class probabilities $p(C_k)$. Lastly use Bayes's theorem to find posterior class probabilities $p(C_k|x)$:
+
 $$\begin{align}
 p(C_k|x) &= \frac{p(x|C_k)p(C_k)}{P(x)}, \\
 p(x) &= \sum_k p(x|C_k)p(C_k).
@@ -125,10 +138,12 @@ Find a discriminant function *f(x)* which maps input x directly to a class label
 We can see the information we received, given a value of a variable x, as the '**degree of surprise**' because, we will receive more information if we were told that an improbable event happened than if we were told that a very likely event happened (since we have known it will happen!).
 
 So the amount of information, $h(x)$, is related to $p(x)$. For two independent event x and y, we should have:
+
 $$\begin{align}
 h(x,y) &= h(x)+h(y),\\
 p(x,y) &= p(x)p(y).
 \end{align}$$
+
 So obviously $h(x)$ must be given by the **logarithm** of $p(x)$, so:
 $$
 h(x) = -\log_2p(x).
@@ -137,4 +152,4 @@ And more importantly, the amount of information of x should be given by the expe
 $$
 H[x] = -\sum_x p(x)\log_2p(x).
 $$
-Where $H[x]$ is called **entropy** of x.
+Where $H[x]​$ is called **entropy** of x.
