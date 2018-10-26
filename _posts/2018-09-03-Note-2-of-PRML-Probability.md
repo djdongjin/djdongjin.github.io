@@ -135,3 +135,80 @@ p(\mu|D,\alpha) &\propto p(\mu|\alpha)p(D|\mu) \propto \prod_k \mu_k^{\alpha_k+m
 &= Dir(\mu|\alpha+m) \\
 &= \frac{\Gamma(\alpha_0+m)}{\Gamma(\alpha_1+m_1)...\Gamma(\alpha_K+m_K)} \prod_k \mu_k^{\alpha_k+m_k-1}.
 \end{aligned}$$
+
+## 2.3. Gaussian Distribution
+
+The Gaussian distribution for a single variable is given by:
+
+$$
+\mathcal{N}(x\mid\mu, \sigma^2) = \frac{1}{(2\pi \sigma^2)^{1/2}} \exp \lbrace\frac{(x-\mu)^2}{2\sigma^2}\rbrace
+$$
+
+For a D-dimensional vector $\mathrm{x}$, the multivariate Gaussian distribution is given by:
+
+$$
+\mathcal{N}(\mathrm{x}\mid\mu,\Sigma) = \frac{1}{(2\pi)^{D/2}} \frac{1}{\mid \Sigma \mid^{1/2}} \exp \{\frac{-1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\}.
+$$
+
+where $\mu$ is a D-dim mean vector, $\Sigma$ is a $D \times D$ covariance matrix.
+
+**Placeholder**
+---
+
+## 2.4. Exponential Family
+
+The exponential family of distributions over $x$, given parameters $\eta$, is a set of distributions in forms of:
+
+$$
+p(x \mid \eta) = h(x)g(\eta)\exp \{\eta^Tu(x)\}.
+$$
+
+where $x$ may be scalar or vector, $\eta$ are called *natural parameters* of the distribution, $u(x)$ is some function of $x$, $g(\eta)$ can be seen as the coefficient that ensure the distribution is normalized and satisfies
+
+$$
+g(\eta) \int h(x)\exp \{\eta^Tu(x)\} dx = 1.
+$$
+
+We begin by checking that Bernoulli distribution indeed belongs to exponential family
+
+$$\begin{aligned}
+p(x \mid \mu) &= Bern(x \mid \mu) = \mu^x (1-\mu)^{1-x} \\
+              &= \exp \{x\ln\mu + (1-x)\ln(1-\mu)\}\\
+              &= \exp \{\ln(1-\mu)+\ln(\frac{\mu}{1-\mu})x\}\\
+              &= (1-\mu)\exp \{ln(\frac{\mu}{1-\mu})x\}.
+\end{aligned}$$
+
+where, compared with equation above, we have $\eta = \ln(\frac{\mu}{1-\mu})$. By letting $\mu=\sigma(\eta)$, we have
+
+$$\begin{aligned}
+\sigma(\eta) = \frac{1}{1+\exp(-\eta)}.
+\end{aligned}$$
+
+which is called *logistic sigmoid* function. Now we can rewrite Bernoulli distribution in forms of
+
+$$\begin{aligned}
+p(x \mid \eta) &= \sigma(-\eta)\exp(\eta x),\\
+u(x) &= x,\\
+h(x) &= 1,\\
+g(\eta) &= \sigma(-\eta).
+\end{aligned}$$
+
+### 2.4.2. Conjugate priors
+
+For a given probability distribution $p(x \mid \eta)$, we can seek a *prior* $p(\eta)$ that is conjugate to the likelihood function, so that the *posterior* distribution has the same functional form as the prior. For any member of the exponential family, there exists a conjugate prior in the form of
+
+$$\begin{aligned}
+p(\eta \mid \mathscr{X}, v) = f(\mathscr{X},v) g(\eta)^v \exp\{v\eta^T\mathscr{X}\}.
+\end{aligned}$$
+
+## 2.5. Nonparametric methods
+
+Limitation of parametric methods: the chosen density might be a poor model of the distribution that generates the data, causing poor predictive performance.
+
+Examples of nonparametric methods: histogram, Kernel density estimator, Nearest-neighbour methods.
+
+---
+TODO:
+
+* [ ] 2.3 Gaussian distribution;
+* [ ] 2.4&2.5 details.
