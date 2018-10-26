@@ -5,5 +5,4 @@ author: "Jin Dong"
 permalink: /about/
 ---
 
-Here are some of my social accounts, thanks for following me!
-
+I am now a first year CS master's student at McGill University.
