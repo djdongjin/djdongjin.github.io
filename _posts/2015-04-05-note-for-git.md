@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Note for Git'
+title: "Note for Git"
 categories:[Basics]
 ---
 
