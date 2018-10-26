@@ -2,7 +2,7 @@
 permalink:      /:year-:month-:day/:title
 
 # Setup
-title:          Jin Dong
+title:          Dong Jin blog
 paginate:       5
 baseurl:        ""
 url:            "https://djdongjin.github.io"
