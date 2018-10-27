@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Note for Git"
-categories:[Basics]
+categories: [Basics]
 ---
 
 **集中式版本控制系统**: 版本库存放在中央server, 工作时首先*联网*从中央server取得最新版本, 任务完成后再把改动推送回中央server. 最大的弊端就在于必须联网才能工作.
