@@ -93,7 +93,7 @@ We can see regularization as a way of compromising between finding small weights
 #### L1 regularization
 
 $$\begin{aligned}
-C &= C_0 +  \frac{\lambda}{n} \sum_w |w| \\
+C &= C_0 +  \frac{\lambda}{n} \sum_w \mid w\mid \\
 \frac{\partial C}{\partial w} &= \frac{\partial C_0}{\partial w} +\frac{\lambda}{n} \rm sgn(w).
 \end{aligned}$$
 

@@ -26,11 +26,11 @@ For a given complex model, **overfitting** will become less severe with the incr
 **Two rules of probabilities**:
 
 1. Sum rule: $P(X) = \sum_Y P(X, Y)$.
-2. Product rule: $P(X, Y) = P(Y|X)P(X)$.
+2. Product rule: $P(X, Y) = P(Y\mid X)P(X)$.
 
-**Bayes' theorem**: $P(Y|X) = \frac{P(X|Y)P(Y)}{P(X)}$, where $P(X)$ can also be written as $\sum_Y P(X|Y)P(Y)$.
+**Bayes' theorem**: $P(Y\mid X) = \frac{P(X\mid Y)P(Y)}{P(X)}$, where $P(X)$ can also be written as $\sum_Y P(X\mid Y)P(Y)$.
 1. Prior probability: $P(Y)$, which is given before the observation happens.
-2. Posterior probability: $P(Y|X)$, obtained after X is observed.
+2. Posterior probability: $P(Y\mid X)$, obtained after X is observed.
 
 **Expectation** of $f(x)$ is the average value of $f(x)$ under a probability distribution $p(x)$ as defined below:
 
@@ -38,7 +38,7 @@ $$\begin{align}
 E[f] &= \sum_x p(x)f(x) \\
 E[f] &= \ p(x)f(x)dx    \\
 E[f] &\approx \frac1N \sum_{n=1}^N f(x_n) \\
-E_x[f|y] &= \sum_x p(x|y)f(x).
+E_x[f\mid y] &= \sum_x p(x\mid y)f(x).
 \end{align}$$
 
 **Variance** of $f(x)$ (or x itself) is the variability of $f(x)$ or x around its mean value $E[f]$:
@@ -65,30 +65,30 @@ cov[x, y] &= E_{x,y}[(x-E[x])(y^T-E[y^T])] \\
 
 **Gaussian distribution** is defined as follows by two parameters, mean $\mu$ and variance $\sigma^2$:
 $$
-G(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi}\sigma^2}\exp^{\frac{(x-\mu)^2}{2\sigma^2}}.
+G(x\mid \mu, \sigma^2) = \frac{1}{\sqrt{2\pi}\sigma^2}\exp^{\frac{(x-\mu)^2}{2\sigma^2}}.
 $$
 Why parameters called mean and variance?
 
 $$\begin{align}
-E[x] &= \int{G(x|\mu, \sigma^2) x}dx = \mu. \\
-E[x^2] &= \int{G(x|\mu, \sigma^2) x^2}dx = \mu^2 + \sigma^2. \\
+E[x] &= \int{G(x\mid \mu, \sigma^2) x}dx = \mu. \\
+E[x^2] &= \int{G(x\mid \mu, \sigma^2) x^2}dx = \mu^2 + \sigma^2. \\
 var[x] &= E[x^2] - E[x]^2 = \sigma^2.
 \end{align}$$
 
 Gaussian distribution over D-dimensional vector $\textbf{x}$:
 $$
-G(\textbf{x}|\mu,\Sigma) = \frac{1}{(2\pi)^{D/2}|\Sigma|^{1/2}}\exp^{-\frac12(x-\mu)^T\Sigma^{-1}(x-\mu)}.
+G(\textbf{x}\mid \mu,\Sigma) = \frac{1}{(2\pi)^{D/2}\mid \Sigma\mid ^{1/2}}\exp^{-\frac12(x-\mu)^T\Sigma^{-1}(x-\mu)}.
 $$
 where mean $\mu$ is a D-dim vector, covariance $\Sigma$ is a D*D matrix.
 
 *Independent and identically distribution* refers to data that are independently drawn from the same distribution.
 
-**Maximum likelihood (MLE)**: estimate parameter $w$ to the value that maximizes the likelihood function $p(D|w)$, (the prob that the observed data appears).
+**Maximum likelihood (MLE)**: estimate parameter $w$ to the value that maximizes the likelihood function $p(D\mid w)$, (the prob that the observed data appears).
 
 *Drawback of MLE*: underestimate the variance of data. Suppose given n values of variable *x* sampled from a Gaussian distribution, $x=(x_1,...,x_n)$, our goal is find $\mu, \sigma^2$ satisfying:
 
 $$\begin{align}
-(\mu,\sigma^2) &= argmin_{\mu,\sigma^2}\sum_n \ln p(x_i|\mu,\sigma^2),\\
+(\mu,\sigma^2) &= argmin_{\mu,\sigma^2}\sum_n \ln p(x_i\mid \mu,\sigma^2),\\
 \mu_{ML} &= \frac1N\sum_{n=1}{N}x_n, \\
 \sigma^2_{ML} &= \frac1N\sum_{n=1}{N}(x_n-\mu_{ML})^2,\\
 \end{align}$$
@@ -110,18 +110,18 @@ This phenomenon is called *bias* of MLE in which the true variance of observed d
 
 ## 1.5. Decision Theory
 
-Getting an output given an input x and a trained model can be seen as two steps: **inference step**, in which we determine the joint distribution $p(x, t)$ by using training data to learn a model for $p(C_k|x)$; **decision step**, in which we make optimal decisions given the posterior probabilities.
+Getting an output given an input x and a trained model can be seen as two steps: **inference step**, in which we determine the joint distribution $p(x, t)$ by using training data to learn a model for $p(C_k\mid x)$; **decision step**, in which we make optimal decisions given the posterior probabilities.
 
 ### Three types of decision making approaches**
 > In a decreasing order of complexity
 
 #### Generative models
 
-In inference step, determine the class-conditional densities $p(x|C_k)$ for each class $C_k$, then infer the prior class probabilities $p(C_k)$. Lastly use Bayes's theorem to find posterior class probabilities $p(C_k|x)$:
+In inference step, determine the class-conditional densities $p(x\mid C_k)$ for each class $C_k$, then infer the prior class probabilities $p(C_k)$. Lastly use Bayes's theorem to find posterior class probabilities $p(C_k\mid x)$:
 
 $$\begin{align}
-p(C_k|x) &= \frac{p(x|C_k)p(C_k)}{P(x)}, \\
-p(x) &= \sum_k p(x|C_k)p(C_k).
+p(C_k\mid x) &= \frac{p(x\mid C_k)p(C_k)}{P(x)}, \\
+p(x) &= \sum_k p(x\mid C_k)p(C_k).
 \end{align}$$
 
 In decision step, we use decision theory to determine class membership. For instance, choose the class with highest probability or set a error matrix.
@@ -130,7 +130,7 @@ It's called so if approaches model the distribution of inputs and outputs, becau
 
 #### Discriminative models
 
-In inference step, determine the posterior class probabilities $p(C_k|x) **directly** (e.g. MLE), and then assign new x to a class using decision theory.
+In inference step, determine the posterior class probabilities $p(C_k\mid x)$ **directly** (e.g. MLE), and then assign new x to a class using decision theory.
 
 #### No-probability models
 

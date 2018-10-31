@@ -33,7 +33,7 @@ $\mu_k$ = 第k个聚类的centroid k
 $\mu_{c^{(i)}}$ = $x^{(i)}$所处聚类的centroid 
 K-means的cost function是各个点到对应聚类中心的距离，即我们的优化目标，公式如下：
 $$
-J\left(c^{(1)},...,c^{(m)}, \mu_1,...,\mu_K\right) = \frac{1}{m}\sum_{i=1}^m ||x^{(i)} - \mu_{c^{(i)}}||^2
+J\left(c^{(1)},...,c^{(m)}, \mu_1,...,\mu_K\right) = \frac{1}{m}\sum_{i=1}^m \mid\mid x^{(i)} - \mu_{c^{(i)}}\mid\mid ^2
 $$
 我们可以通过K-means算法中循环部分的第一个内循环，将每个点划分到最近的聚类中心所在的类中，来最小化cost function
 
@@ -75,20 +75,22 @@ pick clustering that gave lowest cost $J$
 首先我们需要进行特征放缩(feature scaling)以及均值归一化(mean normalization)
 
 $$\begin{aligned}
-\mu_j=\frac{1}{m}\sum_{i=1}^mx_j^{(i)} \\
-s_j = \max x_j - \min x_j\\
-x_j^{(i)} = \frac{x_j^{(i)} - \mu_j}{s_j}
+\mu_j &= \frac{1}{m}\sum_{i=1}^mx_j^{(i)} \\
+s_j   &= \max x_j - \min x_j\\
+x_j^{(i)} &= \frac{x_j^{(i)} - \mu_j}{s_j}
 \end{aligned}$$
 
 PCA算法如下(n-D --> k-D):
 
-1. mean normalization, and optionally feature scaling
-2. compute "covariance matrix"(协方差矩阵):
-        $\Sigma = \frac{1}{m}\sum_{i=1}^m x^{(i)}x^{(i)T}$
-3. compute "eigenvectors" of matrix $\Sigma$:
-        [U, S, V] = svd(Sigma);
-4. Ureduce = U(:, 1:k);
-5. z = Ureduce' * x;
+```
+mean normalization, and optionally feature scaling
+compute "covariance matrix"(协方差矩阵):
+        Sigma = 1/m * sum(x^i * x^i.T} i=1...m
+compute "eigenvectors" of matrix Sigma:
+    [U, S, V] = svd(Sigma);
+Ureduce = U(:, 1:k);
+z = Ureduce' * x;
+```
 
 x是n\*1向量，因此步骤2结果为一个n\*n矩阵，也就是协方差矩阵，注意其表示符号是Sigma而不是求和符号；步骤三中得到的特征矩阵如下图所示，是一个n\*n矩阵，我们取前k列，得到了一个n\*k的矩阵Ureduce；最后通过Ureduce' \* x，得到了降维之后的数据z
 
@@ -102,10 +104,10 @@ $x_{approx} = U_{reduce}^T * z$
 并且，原始数据和还原得到的数据的差距就是原始数据和其投影点之间的projection error
 
 **确定降维维数k**
-average squared projection error: $\frac{1}{m}\sum ||x^{(i)} - x_{approx}^{(i)}||^2$
-total variation in the data: $\frac{1}{m}\sum ||x^{(i)}||^2$
+average squared projection error: $\frac{1}{m}\sum \mid\mid x^{(i)} - x_{approx}^{(i)}\mid\mid^2$
+total variation in the data: $\frac{1}{m}\sum \mid\mid x^{(i)}\mid\mid^2$
 我们应该选择k，使得1所占2的比例最小，即：
-$\min \frac{\frac{1}{m}\sum ||x^{(i)} - x_{approx}^{(i)}||^2}{\frac{1}{m}\sum ||x^{(i)}||^2}$
+$\min \frac{\frac{1}{m}\sum \mid\mid x^{(i)} - x_{approx}^{(i)}\mid\mid ^2}{\frac{1}{m}\sum \mid\mid x^{(i)}\mid\mid ^2}$
 实际当中，我们的做法是选择k，使得上式小于0.01、0.05、0.1，称作把数据降到k维，同时保留了99%/95%的精度。
 另外，由于上式的计算比较复杂，更简单的一种方法是计算对应特征值的比，如下图：
 

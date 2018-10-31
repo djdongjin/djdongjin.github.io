@@ -10,10 +10,10 @@ categories: [Deep Learning, Machine Learning, PRML, Probability]
 
 ## 2.1. Binary Variables
 
-**Bernoulli distribution**: given $p(x=1\|\mu)=\mu,0 \leq \mu \leq \mu$, we have:
+**Bernoulli distribution**: given $p(x=1\mid \mu)=\mu,0 \leq \mu \leq \mu$, we have:
 
 $$\begin{aligned}
-Bern(x|\mu) &= \mu^x (1-\mu)^{1-x} \\
+Bern(x\mid \mu) &= \mu^x (1-\mu)^{1-x} \\
 E[x] &= \mu \\
 var[x] &= \mu (1-\mu)
 \end{aligned}​$$
@@ -21,13 +21,13 @@ var[x] &= \mu (1-\mu)
 Given a dataset $D={x_1,...x_n}$, the likelihood function is:
 
 $$\begin{aligned}
-p(D|\mu) = \prod_{n=1}^{N}p(x_n|\mu)=\prod_{n=1}^{N}\mu^{x_n}(1-\mu)^{1-x_n}.
+p(D\mid \mu) = \prod_{n=1}^{N}p(x_n\mid \mu)=\prod_{n=1}^{N}\mu^{x_n}(1-\mu)^{1-x_n}.
 \end{aligned}$$
 
 By using a Maximum (logarithm) Likelihood Estimation (MLE), from the perspective of **frequentist**, we have
 
 $$\begin{aligned}
-\mu_{ML} &= \arg\max_{\mu} \ln p(D|\mu) \\
+\mu_{ML} &= \arg\max_{\mu} \ln p(D\mid \mu) \\
 &= \arg\max_{\mu} \sum_{n=1}^{N}(x_n\ln \mu + (1-x_n)\ln (1-\mu)).\\
 \end{aligned}$$
 
@@ -39,9 +39,9 @@ $$\begin{aligned}
 **Binomial distribution**: N times of repeated and independent Bernoulli:
 
 $$\begin{aligned}
-Bin(m|N,\mu) &= C_m^N \mu^m (1-\mu)^{N-m}, \\
-E[m] &= \sum_{m=0}^N mBin(m|N, \mu) = N\mu, \\
-var[m] &= \sum_{m=0}^N (m-E[m])^2Bin(m|N,\mu) = N\mu (1-\mu).
+Bin(m\mid N,\mu) &= C_m^N \mu^m (1-\mu)^{N-m}, \\
+E[m] &= \sum_{m=0}^N mBin(m\mid N, \mu) = N\mu, \\
+var[m] &= \sum_{m=0}^N (m-E[m])^2Bin(m\mid N,\mu) = N\mu (1-\mu).
 \end{aligned}$$
 
 ### 2.1.1. Beta distribution
@@ -55,7 +55,7 @@ var[m] &= \sum_{m=0}^N (m-E[m])^2Bin(m|N,\mu) = N\mu (1-\mu).
 **Beta distribution**: hyperparameters a and b are used to control the distribution of $\mu$.
 
 $$\begin{aligned}
-Beta(\mu|a,b) &= \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)} \mu^{a-1} (1-\mu)^{b-1}, \\
+Beta(\mu\mid a,b) &= \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)} \mu^{a-1} (1-\mu)^{b-1}, \\
 E[\mu] &= \frac{a}{a+b}, \\
 var[\mu] &= \frac{ab}{(a+b)^2(a+b+1)}.
 \end{aligned}$$
@@ -63,7 +63,7 @@ var[\mu] &= \frac{ab}{(a+b)^2(a+b+1)}.
 Combining beta distribution, as prior, with Binomial distribution, as a likelihood, we have the posterior distribution of $\mu$:
 
 $$\begin{aligned}
-p(\mu|m,l,a,b) &\propto \mu^{m+a-1}(1-\mu)^{l+b-1} \\
+p(\mu\mid m,l,a,b) &\propto \mu^{m+a-1}(1-\mu)^{l+b-1} \\
 &= \frac{\Gamma(m+a+l+b)}{\Gamma(m+a)\Gamma(l+b)}\mu^{m+a-1}(1-\mu)^{l+b-1}.
 \end{aligned}$$
 
@@ -74,7 +74,7 @@ The result of posterior shows that it is actually an updated Beta distribution g
 **Prediction**: given the dataset by now, predict the next trial using the posterior,
 
 $$\begin{aligned}
-p(x=1|D) &= \int_0^1 p(x=1|\mu)p(\mu|D)d\mu = \int_0^1 \mu p(\mu|D) d\mu = E[\mu|D] \\
+p(x=1\mid D) &= \int_0^1 p(x=1\mid \mu)p(\mu\mid D)d\mu = \int_0^1 \mu p(\mu\mid D) d\mu = E[\mu\mid D] \\
 &= \frac{m+a}{m+a+l+b}.
 \end{aligned}$$
 > Remember the expectation of beta distribution.
@@ -84,7 +84,7 @@ p(x=1|D) &= \int_0^1 p(x=1|\mu)p(\mu|D)d\mu = \int_0^1 \mu p(\mu|D) d\mu = E[\mu
 X can take one of K possible exclusive states instead of only two. Usually we represent x using one-hot encoder, a K-dimensional vector in which $x_k=1$ and all remaining equals to 0. Suppose we use $\mu_k$ to represent the probability of $x_k$, we have
 
 $$\begin{aligned}
-p(x|\mu) = \prod_{k=1}^{K} \mu_k^{x_k}.
+p(x\mid \mu) = \prod_{k=1}^{K} \mu_k^{x_k}.
 \end{aligned}$$
 
 Where $\sum_k \mu_k = 1$. This distribution can be regarded as a generalization of Bernoulli distribution to more than 2 outcomes.
@@ -92,7 +92,7 @@ Where $\sum_k \mu_k = 1$. This distribution can be regarded as a generalization 
 Now given a dataset $D={x_1,...x_N}$, the likelihood function is:
 
 $$\begin{aligned}
-p(D|\mu) &= \prod_n \prod_k \mu_k^{x_{nk}} = \prod_k \mu_k^{\sum_n x_{nk}} = \prod_k \mu_k^{m_k}, \\
+p(D\mid \mu) &= \prod_n \prod_k \mu_k^{x_{nk}} = \prod_k \mu_k^{\sum_n x_{nk}} = \prod_k \mu_k^{m_k}, \\
 m_k &= \sum_n x_{nk}.
 \end{aligned}$$
 
@@ -112,7 +112,7 @@ $$\begin{aligned}
 **Multinomial distribution**: The joint distribution of the quantities $m_1,...,m_K$ given $N$ observations:
 
 $$\begin{aligned}
-Mult(m_1,..,m_K|\mu,N) &= \frac{N!}{m_1!...m_K!} \prod_k \mu_k^{m_k},\\
+Mult(m_1,..,m_K\mid \mu,N) &= \frac{N!}{m_1!...m_K!} \prod_k \mu_k^{m_k},\\
 \sum_k \mu_k &= N.
 \end{aligned}$$
 
@@ -123,16 +123,16 @@ Mult(m_1,..,m_K|\mu,N) &= \frac{N!}{m_1!...m_K!} \prod_k \mu_k^{m_k},\\
 The conjugate prior can be given by
 
 $$\begin{aligned}
-p(\mu|\alpha) &\propto \prod_k \mu_k^{\alpha_{k-1}}, \\
-Dir(\mu|\alpha) &= \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)...\Gamma(\alpha_K)} \prod_k \mu_k^{\alpha_{k-1}},\\
+p(\mu\mid \alpha) &\propto \prod_k \mu_k^{\alpha_{k-1}}, \\
+Dir(\mu\mid \alpha) &= \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)...\Gamma(\alpha_K)} \prod_k \mu_k^{\alpha_{k-1}},\\
 \alpha_0 &= \sum_k \alpha_k.
 \end{aligned}$$
 
 Again, we will get a sequential learning with multinomial distribution, which can be seen from the form of posterior below:
 
 $$\begin{aligned}
-p(\mu|D,\alpha) &\propto p(\mu|\alpha)p(D|\mu) \propto \prod_k \mu_k^{\alpha_k+m_k-1} \\
-&= Dir(\mu|\alpha+m) \\
+p(\mu \mid D,\alpha) &\propto p(\mu\mid \alpha)p(D\mid \mu) \propto \prod_k \mu_k^{\alpha_k+m_k-1} \\
+&= Dir(\mu\mid \alpha+m) \\
 &= \frac{\Gamma(\alpha_0+m)}{\Gamma(\alpha_1+m_1)...\Gamma(\alpha_K+m_K)} \prod_k \mu_k^{\alpha_k+m_k-1}.
 \end{aligned}$$
 
