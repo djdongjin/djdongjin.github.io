@@ -94,7 +94,7 @@ Dropout lets each unit active with a probability of $\mu$ and died with a probab
 
 > The probability of each unit being 1/active is a hyperparameter, usually 0.5 for hidden layers and 0.8 for an input layer.
 
-![For each unit, we add an extra mask $mu$ generated independently by a probability distribution to control whether it is used in this epoch of training](/assets/2018-10-31-dropout.jpg)
+![For each unit, we add an extra mask $mu$ generated independently by a probability distribution to control whether it is used in this epoch of training](/assets/2018-10-31-dropout.jpg = 250x250)
 
 ## Adversarial training
 
