@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Note 7 of Deep Learning: Regularization
+title: "Note 7 of Deep Learning: Regularization"
 categories: [Deep Learning, Machine Learning]
 ---
 
