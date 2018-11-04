@@ -25,7 +25,7 @@ $$\begin{aligned}
 \tilde J(w;X,y) &= J(w;X,y) +\frac12 \mid\mid w \mid\mid _2^2\\
  &= J(w;X,y) + \frac12 w^Tw.
  \end{aligned}$$
- 
+
 ### L1 regularization
 
 The L1 regularization is given by
@@ -94,7 +94,7 @@ Dropout lets each unit active with a probability of $\mu$ and died with a probab
 
 > The probability of each unit being 1/active is a hyperparameter, usually 0.5 for hidden layers and 0.8 for an input layer.
 
-![For each unit, we add an extra mask $mu$ generated independently by a probability distribution to control whether it is used in this epoch of training](/assets/2018-10-31-dropout.jpg = 250x250)
+![For each unit, we add an extra mask $mu$ generated independently by a probability distribution to control whether it is used in this epoch of training](/assets/2018-10-31-dropout.jpg)
 
 ## Adversarial training
 
