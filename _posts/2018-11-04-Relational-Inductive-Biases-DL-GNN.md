@@ -2,11 +2,11 @@
 
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=default' async></script>
-—
+---
 layout: post
 title: “Relational Inductive Biases, Deep Learning, and Graph Networks”
-categories: [Deep Learning, Graph Neural Network, GNN]()
-—
+categories: [Deep Learning, Graph Neural Network, GNN]
+---
 
 > This is a note for the paper: *Relational inductive biases, deep learning, and graph networks*.
 
@@ -35,8 +35,8 @@ For example, graphical models can represent complex joint distributions by makin
 In a learning process, the algorithm may find multiple solutions which are equally good. An **inductive bias** allows a learning algorithm to *prioritize* one solution over another, independent of the observed data. For example, in a Bayesian model, its inductive biases are expressed through the *choice and parameterization of the prior distribution*. An inductive bias may be just a regularization term to avoid overfitting, or may be encoded in the architecture of the algorithm itself.
 —
 Many machine learning methods having a capacity for relational reasoning use a *relational inductive bias*, or inductive biases for simplicity, which impose constraints on relationships and interactions among entities in a learning process. some relational inductive biases are as follows:
-
-![Relational inductive biases]()(
+  
+![][image-1]
 
 ## Graph Neural Networks
 > Neural networks that operate on graphs, and structure their computations accordingly.
@@ -63,9 +63,8 @@ $\phi^e$ is used to map across all edges to compute per-edge updates; $\phi^v$ i
 
 The computational steps in a GN block is as follows. Intuitively, it mainly including three stages: a) edge update; b) node update; c) global update.
 
-!()[ /assets/2018-11-05-aggregation.jpg]()
-
-!()[/assets/2018-11-04-update.jpg]()
+![][image-2]
+![][image-3]
 
 ### Relational inductive biases in graph networks
 
@@ -83,3 +82,27 @@ The global, node, and edge **attributes** of a GN block can use arbitrary repres
 
 For graph structure, there are typically two ways of defining how input data can be represented as a graph: input that explicitly specifies the relational structure such as knowledge graphs, social networks, parse trees, optimization problems; and input that the structure must be inferred or assumed, such as visual scenes, text corpora, programming language source code.
 
+### Configurable within-block structure
+
+placeholder until 4.5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[image-1]:	/assets/2018-11-04-relational-inductive-biases.jpg "Relational Inductive Biases"
+[image-2]:	/assets/2018-11-04-aggregation.jpg
+[image-3]:	/assets/2018-11-04-update.jpg
