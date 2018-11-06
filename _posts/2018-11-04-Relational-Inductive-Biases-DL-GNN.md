@@ -1,4 +1,4 @@
-@: 2018-11-04-Relational-Inductive-Biases-DL-GNN
+2018-11-04-Relational-Inductive-Biases-DL-GNN
 
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=default' async></script>
@@ -72,5 +72,14 @@ The computational steps in a GN block is as follows. Intuitively, it mainly incl
 The GN framework has several strong relational biases in a learning process. 
 First, graphs express *arbitrary relationships* among entities which means the GN’s input determines how representations interact and are isolated, rather than those choices determined by the fixed architecture. For example, the presence of the relationship between two nodes are expressed by an edge; the absence of an edge corresponds the assumption that the two nodes have no relationship and shouldn’t effect each other *directly*.
 Second, graphs represent entities and relations as sets which are invariant to permutations and also means GNs are invariant to the order of these elements.
-Third, 
+Third, a GN’s *per-node* and *per-edge* functions reused across all nodes and edges, which means GNs automatically support a form of combinatorial generalization, because, graphs are composed of edges, nodes, and global features, a single GN can operate on graphs of different sizes and shapes.
+
+## Design Principles for Graph Network Architectures
+
+### Flexible representations
+
+The flexible representations of graph networks are expressed in terms of *the representation of the attributes*, and in terms of *the structure of the graph itself*.
+The global, node, and edge **attributes** of a GN block can use arbitrary representational formats such as real-valued vectors and tensors, but other structures such as sequences, sets or graphs can also be used. The outputs of edges and nodes often correspond to lists of vectors or tensors, one per edge or node, and the global outputs correspond to a single vector/tensor, so that a GN’s output can be passed to other deep learning blocks like MLPs, RNNs.
+
+For graph structure, there are typically two ways of defining how input data can be represented as a graph: input that explicitly specifies the relational structure such as knowledge graphs, social networks, parse trees, optimization problems; and input that the structure must be inferred or assumed, such as visual scenes, text corpora, programming language source code.
 
