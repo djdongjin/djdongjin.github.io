@@ -1,10 +1,10 @@
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=default' async></script>
 ---
 layout: post
 title: “Relational Inductive Biases, Deep Learning, and Graph Networks”
 categories: [Deep Learning, Graph Neural Network, GNN]
 ---
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=default' async></script>
 
 > This is a note for the paper: *Relational inductive biases, deep learning, and graph networks*.
 
