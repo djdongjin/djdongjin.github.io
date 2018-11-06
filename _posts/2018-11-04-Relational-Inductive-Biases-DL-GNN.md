@@ -45,7 +45,7 @@ The main computation unit in the GN framework is the *GN block*, a “graph-to-g
 
 The key design principles of the GN block include: **flexible representations, configurable within-block structure, composable multi-block architectures**.
 
-In this GN framework, a graph is defined by a 3-tuple $G=(u, V, E)$ which includes elements such as node $v_i$, edge $e_k$, and global attributes $u$. An edge $k$ has a sender node $s_k$ and receiver node $r_k$. The $V=\\{v_i\\}_{i=1:N^e}$ is the set of nodes where each $v_i$ is a node’s attribute. The $E=\\{(e_k, r_k, s_k)\\}_{k=1:N^e}$ is the set of edges where each $e_k$ is the edge’s attribute.
+In this GN framework, a graph is defined by a 3-tuple $G=(u, V, E)$ which includes elements such as node $v_i$, edge $e_k$, and global attributes $u$. An edge $k$ has a sender node $s_k$ and receiver node $r_k$. The $V=\lbrace v_i \rbrace _{i=1:N^e}$ is the set of nodes where each $v_i$ is a node’s attribute. The $E= \lbrace (e_k, r_k, s_k) \rbrace _{k=1:N^e}$ is the set of edges where each $e_k$ is the edge’s attribute.
 
 A GN block contains three **update** functions, $\phi$, and three **aggregation** functions, $\rho$:
 
@@ -54,9 +54,9 @@ v'_i &= \phi^v(\bar{e}'_i, v\_i, u), \prod \prod \bar{e}'=\rho^{e \to u}(E') \\
 u' &= \phi^u(\bar{e}',\bar{v}', u), \prod \prod \bar{v}'=\rho^{v \to u}(V'). 
 \end{aligned}$$
 
-where $E'_i = \\{(e'_k, r_k, s_k)\\}_{r_k=i, k=1:N^e}, V' = \\{v'_i\\}_{i=1:N^v}, E' = \cup_i E'_i=\\{(e'_k, r_k, s_k)\\}_{k=1:N^e}$.
+where $E'_i = \lbrace (e'_k, r_k, s_k) \rbrace _{r_k=i, k=1:N^e}, V' = \lbrace v'_i \rbrace _{i=1:N^v}, E' = \cup_i E'_i= \lbrace (e'_k, r_k, s_k) \rbrace _{k=1:N^e}$.
 
-$\phi^e$ is used to map across all edges to compute per-edge updates; $\phi^v$ is used to map across all nodes to compute per-node updates; and $\phi\_u$ is used once to compute the global update. $\rho$ functions take a set as input, and reduce it to a single element which represents the aggregated information. The $\rho$ functions must be *invariant* to permutations of their inputs and should take variable numbers of arguments.
+$\phi^e$ is used to map across all edges to compute per-edge updates; $\phi^v$ is used to map across all nodes to compute per-node updates; and $\phi_u$ is used once to compute the global update. $\rho$ functions take a set as input, and reduce it to a single element which represents the aggregated information. The $\rho$ functions must be *invariant* to permutations of their inputs and should take variable numbers of arguments.
 
 The computational steps in a GN block is as follows. Intuitively, it mainly including three stages: a) edge update; b) node update; c) global update.
 
@@ -82,7 +82,6 @@ For graph structure, there are typically two ways of defining how input data can
 ### Configurable within-block structure
 
 placeholder until 4.5
-
 
 
 [image-1]:	/assets/2018-11-04-relational-bias.jpg "Relational Inductive Biases"
