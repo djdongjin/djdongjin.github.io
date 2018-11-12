@@ -1,6 +1,6 @@
 ---
 layout: post
-title: “Relational Inductive Biases, Deep Learning, and Graph Networks”
+title: Relational Inductive Biases, Deep Learning, and Graph Networks
 categories: [Deep Learning, Graph Neural Network, GNN]
 ---
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
