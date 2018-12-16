@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Note 10 of Deep Learning: Recurrent and Recursive Nets
+title: "Note 10 of Deep Learning: Recurrent and Recursive Neural Network"
 categories: [Deep Learning, RNN]
 ---
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
@@ -9,10 +9,10 @@ categories: [Deep Learning, RNN]
 A recurrent neural network generates the output of time step $t$ not only according to $x^{(t)}$, but also according to the previous history, represented by the hidden state, $h^{(t)}$. Given an input, a RNN will first update its hidden state, then generate the output according to the new hidden state. Main computing functions include:
 
 $$\begin{aligned}
-a^{(t)} &= f(U \times x^{(t)} + W \times h^{(t-1)}) + b \\
-h^{(t)} &= \tanh(a^{(t)}) \\
-o^{(t)} &= V \times h^{(t)} + b\\
-\hat{y^{(t)}} &= softmax(o^{(t)}) \\
+a^{(t)} &= f(U \times x^{(t)} + W \times h^{(t-1)}) + b \\\\
+h^{(t)} &= \tanh(a^{(t)}) \\\\
+o^{(t)} &= V \times h^{(t)} + b\\\\
+\hat{y^{(t)}} &= softmax(o^{(t)}) \\\\
 L^{(t)} &= loss(y^{(t)}, o^{(t)}).
 \end{aligned}$$
 
@@ -34,7 +34,7 @@ Bi-RNNs combine an RNN that moves forward through time beginning from the start 
 
 Sequence-to-sequence (seq2seq) architectures contains two RNNs, one of which is called *encoder* and used to generate the context representation of the input sequence, *C*, and the other is called *decoder* and used to generate the output sequence given *C*. Typically the last hidden state of encoder $h_{n_x}$ is used as the context representation *C*. The innovation of such an architecture is that the length $n_x$ and $n_y$ can vary from each other.
 
-The two RNNs are trained jointly to maximize the average of $\log P(y^{(1)},...,y^{(n_y) \mid x^{(1)},...,x^{(n_x)}}$ over all $(x,y)$ pairs in the training set.
+The two RNNs are trained jointly to maximize the average of $log P(y^{(1)},...,y^{(n_y) \mid x^{(1)},...,x^{(n_x)}}$ over all $(x,y)$ pairs in the training set.
 
 One limitation of seq2seq is when the context *C* has a dimension that is too small to properly summarize a long input sequence. This limitation can be resolved by an *attention mechanism* that learns to associate elements of the sequence *C* to elements of the output sequence.
 
