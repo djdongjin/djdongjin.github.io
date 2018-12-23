@@ -4,7 +4,6 @@
 layout: post
 title: Notes of COMP551 Applied Machine Learning (draft)
 categories: [Machine Learning, Courses]
-author: Jin Dong
 ---
 
 # Lecture 2&3: Linear Regression
@@ -14,6 +13,7 @@ author: Jin Dong
 
 **Solving linear regression analytically**
 Suppose we have $y_i = \sum_{i=0}^{m} w_ix_i$ where $x_i=1$ for each example corresponding bias parameter $w_0$. A most common choice is minimizing *mean-square error (MSE)*:
+
 $$\begin{aligned}
 L(w) &= argmin_w \sum_{i=1}^{n} (y_i - w^Tx_i)^2 \\
 	 &= argmin_w ||Y - Xw||^2 \\
@@ -21,6 +21,7 @@ L(w) &= argmin_w \sum_{i=1}^{n} (y_i - w^Tx_i)^2 \\
 \end{aligned}$$
 
 We can minimize the loss function by taking the derivatives with w and setting to zero:
+
 $$\begin{aligned}
 X^T(Y-Xw) &= 0 \\
 X^TY &= X^TXw \\
@@ -41,29 +42,34 @@ After getting the derivative, instead of computing $w$ directly, we update $w$ a
 - Test set: get a true estimate of the generalization error.
 
 **Ridge regression**: add L2 regularization as a penalty for model complexity in loss function to reduce overfitting.
+
 $$
 w = argmin_{w}(\sum_{i=1}^n (y_i - w^Tx_i)^2 + \lambda\sum_{j=0}^m w_j^2)
 $$
 
 
 **Lasso regression**: add L1 regularization as a penalty.
+
 $$
 w = argmin_{w}(\sum_{i=1}^n (y_i - w^Tx_i)^2 + \lambda\sum_{j=0}^m \|w_j\|)
 $$
 
 # Lecture 5: Generative models for linear classification
-
 Two approaches for linear classification:
 - Discriminative learning: directly estimate $P(y \mid x)$.
 - Generative learning: separately model $P(x \mid y)$ and $P(y)$; use Bayes rule to estimate $P(y \mid x)$.
 
 ## Linear discriminant analysis (LDA)
 According to Bayes rule:
+
 $$P(y \mid x) = \frac{p(x \mid y)p(y)}{p(x)}$$
+
 LDA makes an explicit assumption about $p(x \mid y)$
+
 $$
 p(x \mid y) = \frac{e^{-\frac {1}{2}\left( x-\mu\right) ^{T}\Sigma ^{-1}\left( x-\mu\right) }}{\left( 2\pi \right) ^{1/2}\left| \Sigma \right| ^{1/2}}
 $$
+
 which is a multivariate Gaussian with mean $\mu$ and covariance matrix $\Omega$. $x$ here is an $m*1$ vector.
 > A key assumption of LDA is that both resulting classes have the **same** covariance matrix $\Omega$.
 > Parameters to learn include $p(y), \mu, \Sigma$.
@@ -74,6 +80,7 @@ which is a multivariate Gaussian with mean $\mu$ and covariance matrix $\Omega$.
 **Naive bayes assumption**: assume $x_j$s are conditionally independent given $y$, that is, $P(x_j \mid y) = P(x_j \mid y, x_k)$ for all $j,k$.
 
 With naive bayes assumption, we have:
+
 $$\begin{aligned}
 P(x \mid y) &= P(x_1,...,x_m \mid y) \\
 			&= P(x_1 \mid y)P(x_2 \mid y, x_1)P(x_m \mid y, x_1,...,x_{m-1}) \\
