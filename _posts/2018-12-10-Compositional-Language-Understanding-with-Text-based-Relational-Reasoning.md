@@ -3,7 +3,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=default' async></script>
 ---
 layout: post
-title: “Compositional Language Understanding with Text-based Relational Reasoning”
+title: Compositional Language Understanding with Text-based Relational Reasoning
 categories: [Deep Learning, NLP, Reasoning]
 ---
 
