@@ -9,10 +9,10 @@ categories: [Deep Learning, RNN]
 A recurrent neural network generates the output of time step $t$ not only according to $x^{(t)}$, but also according to the previous history, represented by the hidden state, $h^{(t)}$. Given an input, a RNN will first update its hidden state, then generate the output according to the new hidden state. Main computing functions include:
 
 $$\begin{aligned}
-a^{(t)} &= f(U \times x^{(t)} + W \times h^{(t-1)}) + b \\\\\\
-h^{(t)} &= \tanh(a^{(t)}) \\\\\\
-o^{(t)} &= V \times h^{(t)} + b\\\\\\
-\hat{y^{(t)}} &= softmax(o^{(t)}) \\\\\\
+a^{(t)} &= f(U \times x^{(t)} + W \times h^{(t-1)}) + b \\\\
+h^{(t)} &= \tanh(a^{(t)}) \\\\
+o^{(t)} &= V \times h^{(t)} + b\\\\
+\hat{y^{(t)}} &= softmax(o^{(t)}) \\\\
 L^{(t)} &= loss(y^{(t)}, o^{(t)}).
 \end{aligned}$$
 
