@@ -1,6 +1,6 @@
 ---
 layout: post
-title: “Note 10 of Deep Learning: Recurrent and Recursive Neural Network”
+title: " Note 10 of Deep Learning: Recurrent and Recursive Neural Network "
 categories: [Deep Learning, RNN]
 ---
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Notes of COMP551 Applied Machine Learning
+title: " Notes of COMP551 Applied Machine Learning "
 categories: [Machine Learning, Courses]
 ---
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>

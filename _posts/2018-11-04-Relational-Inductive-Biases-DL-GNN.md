@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Relational Inductive Biases, Deep Learning, and Graph Networks
+title: "Relational Inductive Biases, Deep Learning, and Graph Networks"
 categories: [Deep Learning, Graph Neural Network, GNN]
 ---
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
@@ -50,7 +50,7 @@ In this GN framework, a graph is defined by a 3-tuple $G=(u, V, E)$ which includ
 A GN block contains three **update** functions, $\phi$, and three **aggregation** functions, $\rho$:
 
 $$\begin{aligned}e'_k &= \phi^e(e_k, v_{rk}, v_{sk}, u), \prod \bar{e}'_i = \rho^{e \to v}(E'\_i) \\
-v'_i &= \phi^v(\bar{e}'_i, v\_i, u), \prod \prod \bar{e}'=\rho^{e \to u}(E') \\\\\\
+v'_i &= \phi^v(\bar{e}'_i, v\_i, u), \prod \prod \bar{e}'=\rho^{e \to u}(E') \\\\\\\\
 u' &= \phi^u(\bar{e}',\bar{v}', u), \prod \prod \bar{v}'=\rho^{v \to u}(V'). 
 \end{aligned}$$
 

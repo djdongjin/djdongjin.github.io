@@ -1,6 +1,6 @@
 ---
 layout: post
-title: “Note 13 of Deep Learning: Linear Factor Models”
+title: " Note 13 of Deep Learning: Linear Factor Models "
 categories: [Deep Learning]
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: “Note 14 of Deep Learning: Autoencoders”
+title: " Note 14 of Deep Learning: Autoencoders "
 categories: [Deep Learning]
 ---
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
