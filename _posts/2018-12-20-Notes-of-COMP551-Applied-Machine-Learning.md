@@ -7,15 +7,15 @@ categories: [Machine Learning, Courses]
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=default' async></script>
 
 # Lecture 2&3: Linear Regression
-**i.i.d assumption**: the examples, $x_i$, in the training set are *independently* and *identically distributed*:
-- Independently: each $x_i$ is freshly sampled according to some probability distribution *D* over the data domain *X*, which means $x_i$ is not dependent to any $x_j$ in the same training set.
+**i.i.d assumption**: the examples, $x\_i$, in the training set are *independently* and *identically distributed*:
+- Independently: each $x\_i$ is freshly sampled according to some probability distribution *D* over the data domain *X*, which means $x\_i$ is not dependent to any $x\_j$ in the same training set.
 - Identically: the distribution *D* is the same probability distribution for all examples.
 
 **Solving linear regression analytically**
-Suppose we have $y_i = \sum_{i=0}^{m} w_ix_i$ where $x_i=1$ for each example corresponding bias parameter $w_0$. A most common choice is minimizing *mean-square error (MSE)*:
+Suppose we have $y\_i = \sum\_{i=0}^{m} w\_ix\_i$ where $x\_i=1$ for each example corresponding bias parameter $w\_0$. A most common choice is minimizing *mean-square error (MSE)*:
 
 $$\begin{aligned}
-L(w) &= argmin_w \sum_{i=1}^{n} (y_i - w^Tx_i)^2 \\
+L(w) &= argmin\_w \sum\_{i=1}^{n} (y\_i - w^Tx\_i)^2 \\\\
 	 &= argmin_w ||Y - Xw||^2 \\
 	 &= argmin_w (Y-Xw)^T(Y-Xw) \\
 \end{aligned}$$
@@ -23,8 +23,8 @@ L(w) &= argmin_w \sum_{i=1}^{n} (y_i - w^Tx_i)^2 \\
 We can minimize the loss function by taking the derivatives with w and setting to zero:
 
 $$\begin{aligned}
-X^T(Y-Xw) &= 0 \\
-X^TY &= X^TXw \\
+X^T(Y-Xw) &= 0 \\\\
+X^TY &= X^TXw \\\\
 w &= (X^TX)^{-1}X^TY
 \end{aligned}$$
 
@@ -44,14 +44,14 @@ After getting the derivative, instead of computing $w$ directly, we update $w$ a
 **Ridge regression**: add L2 regularization as a penalty for model complexity in loss function to reduce overfitting.
 
 $$
-w = argmin_{w}(\sum_{i=1}^n (y_i - w^Tx_i)^2 + \lambda\sum_{j=0}^m w_j^2)
+w = argmin_{w}(\sum_{i=1}^n (y\_i - w^Tx\_i)^2 + \lambda\sum\_{j=0}^m w\_j^2)
 $$
 
 
 **Lasso regression**: add L1 regularization as a penalty.
 
 $$
-w = argmin_{w}(\sum_{i=1}^n (y_i - w^Tx_i)^2 + \lambda\sum_{j=0}^m \|w_j\|)
+w = argmin_{w}(\sum_{i=1}^n (y\_i - w^Tx\_i)^2 + \lambda\sum\_{j=0}^m \|w\_j\|)
 $$
 
 # Lecture 5: Generative models for linear classification
@@ -70,19 +70,19 @@ $$
 p(x \mid y) = \frac{e^{-\frac {1}{2}\left( x-\mu\right) ^{T}\Sigma ^{-1}\left( x-\mu\right) }}{\left( 2\pi \right) ^{1/2}\left| \Sigma \right| ^{1/2}}
 $$
 
-which is a multivariate Gaussian with mean $\mu$ and covariance matrix $\Omega$. $x$ here is an $m*1$ vector.
+which is a multivariate Gaussian with mean $\mu$ and covariance matrix $\Omega$. $x$ here is an $m\*1$ vector.
 > A key assumption of LDA is that both resulting classes have the **same** covariance matrix $\Omega$.
 > Parameters to learn include $p(y), \mu, \Sigma$.
 
 ## Scale up generative learning: Naive Bayes
 > model $P(x \mid y)$ and $P(y)$ and then compute $P(y \mid x)$.
 
-**Naive bayes assumption**: assume $x_j$s are conditionally independent given $y$, that is, $P(x_j \mid y) = P(x_j \mid y, x_k)$ for all $j,k$.
+**Naive bayes assumption**: assume $x\_j$s are conditionally independent given $y$, that is, $P(x\_j \mid y) = P(x\_j \mid y, x\_k)$ for all $j,k$.
 
 With naive bayes assumption, we have:
 
 $$\begin{aligned}
-P(x \mid y) &= P(x_1,...,x_m \mid y) \\
+P(x \mid y) &= P(x\_1,...,x\_m \mid y) \\\\
 			&= P(x_1 \mid y)P(x_2 \mid y, x_1)P(x_m \mid y, x_1,...,x_{m-1}) \\
 			&= P(x_1 \mid y),...,P(x_m \mid y)
 \end{aligned}$$
@@ -90,10 +90,9 @@ P(x \mid y) &= P(x_1,...,x_m \mid y) \\
 ## Gaussian Naive Bayes
 > Extending Naive Bayes to continuous inputs.
 
-$P(y)$ is still a binomial distribution, but $P(x \mid y)$ is a multivariate (normal) Gaussian distribution with mean $\mu \in R^n$ and covariance matrix $\Sigma \in R^n * R^n$:
+$P(y)$ is still a binomial distribution, but $P(x \mid y)$ is a multivariate (normal) Gaussian distribution with mean $\mu \in R^n$ and covariance matrix $\Sigma \in R^n \* R^n$:
 - If all classes have the same $\Sigma$, it is a *LDA*.
 - If $\Sigma$ is distinct between classes, it is a *QDA*.
 - If $\Sigma$ is diagonal (e.g. features are independent), it is *Gaussian Naive Bayes*.
-
 
 

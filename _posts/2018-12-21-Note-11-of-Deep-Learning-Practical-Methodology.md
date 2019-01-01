@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Note 11 of Deep Learning: Practical Methodology
+title: “Note 11 of Deep Learning: Practical Methodology”
 categories: [Machine Learning, Deep Learning]
 ---
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
