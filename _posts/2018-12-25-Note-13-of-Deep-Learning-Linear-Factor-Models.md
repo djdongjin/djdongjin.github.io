@@ -16,7 +16,7 @@ $$
 h \sim p(h)
 $$
 
-where $p(h) = \prod_i p(h_i)$ is a factorial distribution. Then the real-valued observable variables is generated given the factors by:
+where $p(h) = \prod\_i p(h\_i)$ is a factorial distribution. Then the real-valued observable variables is generated given the factors by:
 
 $$
 x = Wh + b + noise
@@ -33,7 +33,7 @@ $$
 h \sim \mathcal{N}(h;0,I)
 $$
 
-The noise is drawn from a diagonal covariance Gaussian distribution, with covariance matrix $\psi = diag(\sigma^2)$, with $\sigma^2 = [\sigma_1^2,...,\sigma_n^2]^T$.
+The noise is drawn from a diagonal covariance Gaussian distribution, with covariance matrix $\psi = diag(\sigma^2)$, with $\sigma^2 = [\sigma\_1^2,...,\sigma\_n^2]^T$.
 
 The latent variables thus can *capture the dependencies* between the different observed variables $x$. And $x$ is just a multivariate normal random variable with
 
@@ -41,10 +41,10 @@ $$
 x \sim \mathcal{N}(x;b,WW^T+\psi).
 $$
 
-To get probabilistic PCA model, we modify the factor analysis model, making the conditional variances $\sigma_i^2$ equal to each other. So the covariance of $x$ is $WW^T+\sigma^2I$ where $\sigma^2$ is now  a scalar. This yields
+To get probabilistic PCA model, we modify the factor analysis model, making the conditional variances $\sigma\_i^2$ equal to each other. So the covariance of $x$ is $WW^T+\sigma^2I$ where $\sigma^2$ is now  a scalar. This yields
 
 $$\begin{aligned}
-x &\sim \mathcal(N)(x;b,WW^T+\sigma^2I) \\
+x &\sim \mathcal(N)(x;b,WW^T+\sigma^2I) \\\\
   &= Wh + b + \sigma z
 \end{aligned}$$
 
@@ -56,4 +56,3 @@ where $z \sim \mathcal{N}(z;0,I)$ is a Gaussian noise.
 ## Slow Feature Analysis (SFA)
 > A linear factor model that uses information from time signals to learn invariant features.
 > Slowness principle: the important characteristics of scene change vary slowly compared to the individual measurements that make up the scene.
-
