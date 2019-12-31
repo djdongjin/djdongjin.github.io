@@ -1,11 +1,8 @@
-<!-- # Note for CS224W - Machine Learning with Graphs -->
-
 ---
 layout: post
 comments: true
 title:  "Note for CS224W - Machine Learning with Graphs"
-excerpt: ""
-date:   2019-12-08
+categories: [Deep Learning]
 mathjax: true
 ---
 
@@ -32,7 +29,7 @@ By folding a bipartite graph, we can obtain a *folded graph* consisting of all n
 
 > A author-to-paper bipartite graph can be folded to a author-collaboration folded graph (nodes are authors) or a paper-co-authoring folded graph (nodes are papers).
 
-![A bipartite graph and two corresponding folded graphs.](cs224w-img/1-bipartite-folded.jpg)
+![A bipartite graph and two corresponding folded graphs.](/_posts/cs224w-img/1-bipartite-folded.jpg)
 
 ### Representing graphs
 
@@ -110,15 +107,15 @@ For connected components, we can use *BFS* to find all connected components in a
 
 Degree distrbution is is heavily skewed and similar to a log-log curve.
 
-![Log-Log Degree Distribution](cs224w-img/2-pk-log-log.jpg)
+![Log-Log Degree Distribution](/_posts/cs224w-img/2-pk-log-log.jpg)
 
 Gaint connected component contains most nodes of the graph.
 
-![Connected component size to count](cs224w-img/2-gcc.jpg)
+![Connected component size to count](/_posts/cs224w-img/2-gcc.jpg)
 
 Averge path length is about 6 (6.6) and 90% nodes can be reached within 8 hops.
 
-![Diameters of WCC](cs224w-img/2-diameter-dist.jpg)
+![Diameters of WCC](/_posts/cs224w-img/2-diameter-dist.jpg)
 
 
 ### Erdös-Renyi Random Graph Model
@@ -148,7 +145,7 @@ The $\min(|S|, |V\\S|)$ just means that when choosing the subset over two subset
 
 For a random graph $G_{np}$ with $\log{n} \gt np \gt c$, we have $diam(G_{np}) = O(\log{n} / \log{np})$.
 
-![Expansion](cs224w-img/2-expansion.jpg)
+![Expansion](/_posts/cs224w-img/2-expansion.jpg)
 
 A logarithmic diameter (large expansion) means that Erdös-Renyi random graph can grow very large while all nodes are just a few hops apart.
 
@@ -170,7 +167,7 @@ Two processes:
 2. Rewrite: introduce randomness/shortcuts to address high diameter:
    1. for each edge, with probability $p$, move the other endpoint to a random node.
 
-![Regular network - small world network - random network](cs224w-img/2-small-world.jpg)
+![Regular network - small world network - random network](/_posts/cs224w-img/2-small-world.jpg)
 
 ### Kronecker graph model
 
@@ -180,7 +177,7 @@ Kronecker graph model operates over a adjacency matrix. Starting from a $n \time
 
 Give two matrices $A$ and $B$, Kronecker product is defined as:
 
-![Kronecker product](cs224w-img/2-kronecker-product.jpg)
+![Kronecker product](/_posts/cs224w-img/2-kronecker-product.jpg)
 
 A Kronecker product of two graphs is the Kronecker product of their adjacency matrices.
 
@@ -233,7 +230,7 @@ $SP$ is just a vector of normalized Z-scores.
 
 Given a graph, we need to generate a random graph for comparision. Two ways of generating a random graph given a degree sequence are:
 
-![spoke random graph generation](cs224w-img/2-spoke.jpg)
+![spoke random graph generation](/_posts/cs224w-img/2-spoke.jpg)
 
 1. Spoke: see fig.
 2. Switching
@@ -268,7 +265,7 @@ An interesting finding is that graphs from the same domain usually contain simil
 
 *Graphlet degree vector (GDV)* counts number of graphs that a node touches. *Automorphism orbits* are unique positions that are not symmetric to other positions in the subgraph. And *GDV* is a vector with frequencies of the node in each orbit position of different graphlets.
 
-![An example of GDV.](cs224w-img/3-GDV.jpg)
+![An example of GDV.](/_posts/cs224w-img/3-GDV.jpg)
 
 ### Finding motifs and graphlets
 
@@ -293,9 +290,9 @@ ESU is implemented in a *recursive* way. The complete process can be shown as a 
 
 These two properties prevent us generating repeated subgraphs.
 
-![ESU Algorithm](cs224w-img/3-ESU.jpg)
+![ESU Algorithm](/_posts/cs224w-img/3-ESU.jpg)
 
-![An example of ESU-Tree](cs224w-img/3-ESU-Tree.jpg)
+![An example of ESU-Tree](/_posts/cs224w-img/3-ESU-Tree.jpg)
 
 #### Counting subgraphs
 
@@ -326,7 +323,7 @@ The idea of *RolX* is mainly recursively feature extraction, as well as role ext
 1. Feature extraction: RolX first extracts *local* features and *egonet* features, based on which it recursively extracts regional features by aggregations such as mean and sum. The issue is that *the number of possible recursive features* grows exponentially with each recursive iteration, which can be addressed by using pruning techniques to eliminate correlated features.
 2. Role extraction: cluster nodes based on the extracted features.
 
-![RolX](cs224w-img/3-rolx.jpg)
+![RolX](/_posts/cs224w-img/3-rolx.jpg)
 
 ---
 
@@ -392,9 +389,9 @@ $$
 
 Then, $\Delta Q = \Delta Q(i \to C) + \Delta Q(D \to i)$.
 
-![Understanding of $\Delta Q$](cs224w-img/4-DeltaQ.jpg)
+![Understanding of $\Delta Q$](/_posts/cs224w-img/4-DeltaQ.jpg)
 
-![Louvain Algorithm](cs224w-img/4-Louvain.jpg)
+![Louvain Algorithm](/_posts/cs224w-img/4-Louvain.jpg)
 
 ### Detecting overlapping communities: BigCLAM
 
@@ -409,7 +406,7 @@ AGM is a geneartive model that contains parameter $F$:
 
 The prob. of two nodes $u, v$ is connected is: $p(u, v) = 1 - \prod_{c \in M_u \And M_v}(1 - p_c)$.
 
-![Community Affiliation Graph](cs224w-img/4-AGM.jpg)
+![Community Affiliation Graph](/_posts/cs224w-img/4-AGM.jpg)
 
 Given a graph $G$, we can use maximum likelihood estimation (MLE $P(G | F)$) to find the AGM generative model that generates $G$ with the highest probability.
 
@@ -538,7 +535,7 @@ First we generalize cut, volume and conductance to motifs:
 
 Motif-based spectral clustering paritions a graph based on a set of interesting motifs. The difference to normal spectral clustering is that motif-based method first form a new weighted graph $W^{(M)}$ and then apply spectral clustering on $W^{(M)}$.
 
-![motif-based spectral clustering](cs224w-img/5-motif-clustering.jpg)
+![motif-based spectral clustering](/_posts/cs224w-img/5-motif-clustering.jpg)
 
 ---
 
@@ -645,7 +642,7 @@ $$
 
 The generated node embeddings should satisfy that similarities in the embedding space (e.g. defined by dot product) approximates similarities in the original network.
 
-![Node embedding](cs224w-img/7-node-embedding.jpg)
+![Node embedding](/_posts/cs224w-img/7-node-embedding.jpg)
 
 A node embedding model should at least:
 
@@ -706,7 +703,7 @@ We now can divide neighbors of current node $w$ into three set:
 2. BFS set $S_2$: $s_1$ has the same distance to nodes in $S_2$ with to current node $w$; prob of going to nodes in $S_2$ is $1$.
 3. DFS set $S_3$: prob of going to nodes in $S_3$ is $\frac{1}{q}$.
 
-![node2vec](cs224w-img/7-node2vec.jpg)
+![node2vec](/_posts/cs224w-img/7-node2vec.jpg)
 
 ---
 
@@ -818,11 +815,11 @@ GraphRNN generates graphs by predicting a sequence $S^{\pi}$ that has two levels
 1. An outter node level of generating one node at a time, so $S^{\pi} = \{S_1^{\pi}, S_2^{\pi}, ..., S_n^{\pi}\}$.
 2. An inner edge level of generating one edge at a time, which run whenever a new node is added and connects the new node with previous nodes, so $S_i^{\pi} = \{S_{i,1}^{\pi}, S_{i,2}^{\pi},..., S_{i,i-1}^{\pi}\}, \forall i \in [1, n]$.
 
-![GraphRNN: node-level and edge-level sequence](cs224w-img/10-graphrnn.jpg)
+![GraphRNN: node-level and edge-level sequence](/_posts/cs224w-img/10-graphrnn.jpg)
 
 GraphRNN uses two RNNs to model the two-level sequence generation task where the node-level RNN generates the initial state for edge-level RNN; then edge-level RNN generates edges for the new node and update the node-level RNN state using generated results.
 
-![GraphRNN: node-level and edge-level RNN](cs224w-img/10-graphrnn-RNN.jpg)
+![GraphRNN: node-level and edge-level RNN](/_posts/cs224w-img/10-graphrnn-RNN.jpg)
 
 Usually, we just feed the output of RNN in last time step as the input of next time step, which makes the model too deterministic. After trained, the model will always generate the same graph given the same noise. Since our goal is to model
 
@@ -834,7 +831,7 @@ Thus, instead of letting $x_t = y_{t-1}$, we let the model output the  condition
 
 We train the model using teacher forcing, and replace ground truth with GraphRNN's own predictions when testing.
 
-![GraphRNN: training with teach forcing](cs224w-img/10-graphrnn-training.jpg)
+![GraphRNN: training with teach forcing](/_posts/cs224w-img/10-graphrnn-training.jpg)
 
 Still, the current model has a tractability issue. At each step, the edge-level RNN will connect the new node with all previous nodes, causing a $O(n^2)$ time complexity. Also the model has to handle long-range edge dependencies with current random node ordering (imagine a node ordering(1,5,4,3,2) and an edge (1,2). The edge will be processed after node 5,4,3 are generated.)
 
@@ -879,7 +876,7 @@ $$
 
 We initialize each entry of $r$ by $\frac{1}{|N|}$ such that we always have $\sum_i r_i = 1$.
 
-![Flow equations and matrix formulation of PageRank.](cs224w-img/11-pagerank.jpg)
+![Flow equations and matrix formulation of PageRank.](/_posts/cs224w-img/11-pagerank.jpg)
 
 From the matrix formulation, we know that $r = M \cdot M \cdot ... \cdot M \cdot r$, which can be solved by power iteration method:
 
@@ -894,9 +891,9 @@ The vanilla PageRank has two issues:
 1. Dead ends: some nodes have only in-edges but no out-edges, causing importance to **leak out** ($\sum_i r_i \not = 1$).
 2. Spider traps: almost all out-edges are within one group, causing that spiders traps absorb all importance (but the algorithm still work without error, e.g., $\sum_i r_i = 1$, but not as what we want).
 
-![Dead ends](cs224w-img/11-deald-ends.jpg)
+![Dead ends](/_posts/cs224w-img/11-deald-ends.jpg)
 
-![Spider traps](cs224w-img/11-spider-traps.jpg)
+![Spider traps](/_posts/cs224w-img/11-spider-traps.jpg)
 
 **Solution to spider traps**: at each step, follow PageRank with probability $\beta$, or jump to a random page with probability $1-\beta$
  (teleport), which can be seen as restart. Teleports make a surfer can jump out a spider trap within a few steps.
@@ -918,7 +915,7 @@ $$\begin{aligned}
 
 where $A$ is the *Google Matrix*, the modified stochastic adjacency matrix. In practice, $\beta=0.8, 0.9$.
 
-![Google version PageRank](/cs224w-img/11-Google-PageRank.jpg)
+![Google version PageRank](//_posts/cs224w-img/11-Google-PageRank.jpg)
 
 Note that using $r=A \cdot r$ is infeasible in practice because matrix $A$ takes $N^2$ memory which is pretty large. But we can rearrange PageRank equation as
 
@@ -930,7 +927,7 @@ $$\begin{aligned}
 
 where $M$ is now a sparse matrix. Suppose each node has 10 edges in average, $M$ has only $\Theta(10N)$ entries. To keep the sparsity, we don't preprocess $M$, e.g., filling in $1/N$. Instead, we renormalize $r^{new}$ such that it sums to 1.
 
-![Complete PageRank algorithm](cs224w-img/11-pagerank-complete.jpg)
+![Complete PageRank algorithm](/_posts/cs224w-img/11-pagerank-complete.jpg)
 
 ### Personalized PageRank and Random Walk with Restarts.
 
@@ -946,7 +943,7 @@ We can address the *graph proximity* task with random walks with restart / perso
 2. With probability $\alpha$, restart the walk at one of the `QUERY_NODES`.
 3. Nodes with the highest visit count have the highest proximity to the `QUERY_NODES`.
 
-![Graph proximity using random walks with restart.](cs224w-img/11-graph-proximity.jpg)
+![Graph proximity using random walks with restart.](/_posts/cs224w-img/11-graph-proximity.jpg)
 
 ---
 
@@ -1042,7 +1039,7 @@ where $[p(1),...,p(m)]$ is any permutations of $[1,...,m]$.
 
 The neural intersection operator is also called **DeepSet**. It first extracts features of query embeddings using function $\phi$ which can be a neural net. Then a permutation invariant pooling operation, such as mean, is used to combine features. At last, the pooled result is projected using $\beta$ which is another neural net, and the final result is obtained.
 
-![DeepSet](cs224w-img/17-deepset.jpg)
+![DeepSet](/_posts/cs224w-img/17-deepset.jpg)
 
 Parameter numbers: assume we are using TransE, we need $d|N|$ for entity embedding, $d|R|$ for relation embedding. The neural intersecion operator has two neural nets $\phi$ and $\beta$, whose parameter numbers don't depend on graph sizes.
 
@@ -1072,7 +1069,7 @@ $$\begin{aligned}
         Off(q^{\prime}) &= Off(q) + Off(r)
 \end{aligned}$$
 
-![Geometric projection operator](cs224w-img/17-geometric-projection-operator.jpg)
+![Geometric projection operator](/_posts/cs224w-img/17-geometric-projection-operator.jpg)
 
 *Geometric intersecion operator* $\mathcal{J}$ takes a set of query embeddings (box embeddings) and outputs a new box which is an intersection of the input boxes. The new center is a weighted average and new offset is shrinked (intersection must be smaller than or equal to inputs):
 
@@ -1092,7 +1089,7 @@ $$
 
 where $\alpha \in (0,1)$. The intuition is that we should make sure to come into the box first before computing the distance to the center point. So $d_{in}(q,v)$ should be discounted.
 
-![Entity-to-box distance](cs224w-img/17-entity-to-box.jpg)
+![Entity-to-box distance](/_posts/cs224w-img/17-entity-to-box.jpg)
 
 We also train the complete model by sampling negative samples and using a loss with margin:
 
@@ -1100,7 +1097,7 @@ $$
 \mathcal{L} = -\log \sigma \left( \gamma-d_{box}(q,v) \right) - \log \sigma \left( d_{box}(q,v_i^{\prime}) - \gamma \right)
 $$
 
-![Query2Box loss](cs224w-img/17-query-2-box-loss.jpg)
+![Query2Box loss](/_posts/cs224w-img/17-query-2-box-loss.jpg)
 
 ---
 
@@ -1110,7 +1107,7 @@ $$
 
 Injective neighbor aggregation: Computation graphs of GNNs on each node is a subtree structure rooted on that node, by which we can obtain node representations. A GNN layer is *injective* if it maps different nodes/sub-strees into different outputs. And the entire neighbor aggregation / GNN is *injective* if every step/layer of neighbor aggregation is injective.
 
-![Injectivity of neighbor aggregation. Different colors mean different types of nodes.](cs224w-img/18-injectivity.jpg)
+![Injectivity of neighbor aggregation. Different colors mean different types of nodes.](/_posts/cs224w-img/18-injectivity.jpg)
 
 ### Limitations of GNNs in capturing graph structures
 
@@ -1118,7 +1115,7 @@ Injective neighbor aggregation: Computation graphs of GNNs on each node is a sub
 
 We can also formalize neighbor aggregation of GNNs as functions over multi-sets (a set of nodes thay may be repeatitive). For vanilla GCN, the function is mean pooling + linear ReLU. We can find that GCN fails to distinguish proportionally equivalent multi-sets, which produce the same mean output. Similarly, GraphSage with MLP+max pooling cannot distinguish multi-sets that have the same maximum elements.
 
-![GCN cannot distinguish proportionally equivalent multi-sets](cs224w-img/18-multiset.jpg)
+![GCN cannot distinguish proportionally equivalent multi-sets](/_posts/cs224w-img/18-multiset.jpg)
 
 Theorem: any injective multi-set function can be expressed by:
 
@@ -1128,11 +1125,11 @@ $$
 
 where $\phi$ and $f$ are two non-linear functions which can be modeled using MLP. $x$ are elements in the multi-set $S$.
 
-![multi-set function.](cs224w-img/18-multi-set-function.jpg)
+![multi-set function.](/_posts/cs224w-img/18-multi-set-function.jpg)
 
 Graph Isomorphism Network (GIN) formulates its neighbor aggregation with the theorem, which is MLP+sum pooling. Thus GIN is injective.
 
-![GIN can distinguish these two graphs](cs224w-img/18-GIN-graph.jpg)
+![GIN can distinguish these two graphs](/_posts/cs224w-img/18-GIN-graph.jpg)
 
 ### Vulnerability of GNNs to Noise in Graph Data
 
@@ -1142,7 +1139,7 @@ $$
 f(A,X) = softmax\left(\tilde{A}ReLU\left(\tilde{A}XW^{(1)}\right)W^{(2)}\right).
 $$
 
-![Attack ways](cs224w-img/18-attack.jpg)
+![Attack ways](/_posts/cs224w-img/18-attack.jpg)
 
 The mathematical formulation of graph attacking is that we can find the modified graph by maximizing the change of predicted labels of target nodes, with the GCN trained on modified graphs.
 
@@ -1215,17 +1212,17 @@ PinSage mainly has four key innovations:
 
 > Heterogeneous graphs: graphs with different node types and edge types.
 
-![An example of heterogeneous graph](cs224w-img/19-heter-graph.jpg)
+![An example of heterogeneous graph](/_posts/cs224w-img/19-heter-graph.jpg)
 
 The task of DECAGON is to predict labeled edges between drug nodes. For example, DECAGON need to predict the likelihood of an edge $(c,r_2,s)$ existing where $c$ and $s$ are two drug nodes and $r_2$ is a side effect edge type.
 
 DECAGON computes GNN messages from each edge type, then aggregate messages across different edge types to generate node embeddings.
 
-![DECAGON computation graphs](cs224w-img/19-DECAGON-computation.jpg)
+![DECAGON computation graphs](/_posts/cs224w-img/19-DECAGON-computation.jpg)
 
 With learned node embeddings, DECAGON uses paired node embeddings to make edge predictions with a neural net.
 
-![DECAGON edge prediction](cs224w-img/19-DECAGON-edge-prediction.jpg)
+![DECAGON edge prediction](/_posts/cs224w-img/19-DECAGON-edge-prediction.jpg)
 
 ### GCPN: goal-directed molecule generation
 
@@ -1242,4 +1239,4 @@ Rward assignments: GCPN considers intermediate rewards and final rewards:
 
 GCPN has two parts: 1). supervised training to train policy by imitating actions given by real observed graphs; 2) RL training to train policy that optimizes rewards.
 
-![GCPN architecture](cs224w-img/19-GCPN-arch.jpg)
+![GCPN architecture](/_posts/cs224w-img/19-GCPN-arch.jpg)
