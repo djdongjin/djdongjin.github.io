@@ -1,29 +1,28 @@
 # Site settings
-title: Klise Theme # site title
+title: Jin's Blog 
 description: >- # site description
-  He's writing in Bahasa about web technology and experience as a journal 
-  for documentation things that he learned, meet him <a href="https://github.com/piharpi" target="_blank" rel="noopener">@github</a>.
+  Hi, my name is Jin Dong. I am currently a software engineer @Microsoft in Vancouver(and soon in Redmond).
 lang: en-US # default lang
-timezone: Asia/Jakarta # set your timezone
-image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
-repo: https://github.com/piharpi/jekyll-klise # site repo [optional]
+timezone: Canada/Pacific # America/New_York
+# image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
+repo: https://github.com/djdongjin/djdongjin.github.io
 mode: dark # default theme "dark" | "light"
 
 # Profile settings
 author:
-  name: Jekyll Klisé # author name
+  name: Jin Dong
   bio: >- # tell to the world
-    The minimalist Jekyll theme, light and dark mode support, for running a personal site and blog, 
-    meet Klisé theme at <a href="https://github.com/piharpi/jekyll-klise" target="_blank" rel="noopener">@github</a>.
-  username: username # general username
-  github: github_username # github username
-  twitter: twitter_username # twitter username
-  facebook: facebook_username # facebook username
-  email: your-email@email.com # email adress
-  avatar: /assets/img/avatar.jpg # change with your own avatar
+    Hi, my name is Jin Dong. I am currently a software engineer @Microsoft Vancouver(and soon Redmond).
+    You can find me at <a href="https://github.com/djdongjin" target="_blank" rel="noopener">@github</a>.
+  username: djdongjin # general username
+  github: djdongjin # github username
+  # twitter: twitter_username # twitter username
+  # facebook: facebook_username # facebook username
+  email: djdongjin@gmail.com
+  # avatar: /assets/img/avatar.jpg # change with your own avatar
 
 # URL settings
-url: "https://klise.now.sh" #
+url: "https://djdongjin.github.io/"
 baseurl:
 permalink: /:title/
 google_analytics: # leave it blank if not wish
@@ -60,7 +59,7 @@ jekyll_compose:
     description:
 
 # Homepage limit posts
-number_of_posts: 5
+number_of_posts: 6
 
 # Build settings
 # theme: klise
