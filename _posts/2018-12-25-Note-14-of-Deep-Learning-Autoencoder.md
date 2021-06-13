@@ -3,9 +3,6 @@ layout: post
 title: " Note 14 of Deep Learning: Autoencoders "
 categories: [Deep Learning]
 ---
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=default' async></script>
-
 Autoencoder is a neural network trained to copy its input to its output. It can be seen as two parts: an encoder $h = f(x)$ that generates a latent representation, a decoder $r = g(h)$ that generates the reconstruction of the input given its latent representation.
 
 Ideally, autoencoders are designed not to recover all data, but to copy only approximately and to copy only input that *resembles the training data*. Since the model tries to prioritize which aspects of the input should be copied, it usually learns properties of the data. Autoencoders can be used for dimensionality reduction and feature learning.

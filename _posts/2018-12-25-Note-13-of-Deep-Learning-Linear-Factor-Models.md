@@ -4,10 +4,6 @@ title: " Note 13 of Deep Learning: Linear Factor Models "
 categories: [Deep Learning]
 ---
 
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=default' async></script>
-
-
 A linear factor model is defined by using a stochastic, linear decoder function that generates $x$ by adding noise to a linear transformation of $h$ which is a latent variable representing the data.
 
 The data generation process is as follows. First, the explanatory factors $h$ are sampled from

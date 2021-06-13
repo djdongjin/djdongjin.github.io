@@ -17,10 +17,8 @@ And the key factors causing underfit and ovefit are *the complexity of model* an
 
 ## the complexity of model
 Given a training set, it's obvious that the more complex a model is, the better its fitting ability is, like, a linear model can only learn linear relation, but a polynomial model can learn many relations, both linear and non-linear. So, a more complex model is more likely to get a lower training error, and to cause overfit(means it learns too many things!), and a relatively simple model is more likely to get a higher training error, which means underfit(it learns too few things because it is too simple).
-![](/assets/2017-07-20-Overfit-Underfit-complexity.jpg)
 ## the size of training set
 Given a model, it's also obvious that the size of training set will effect the performance of the model. If we have just several training examples, like, less than the number of parameters, overfit is more likely to happen because the model we get is too close to the distribution of the little training set, rather than the whole distribution. In this situation we can add more training examples to overcome overfit. On the other hand, a too big training set has no effect on generalization error, because no matter how big the training set, training examples have the same distribution.
-![](/assets/2017-07-20-Overfit-Underfit-size.jpg)
 
 
 ## Summary

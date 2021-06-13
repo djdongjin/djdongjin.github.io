@@ -3,8 +3,6 @@ layout: post
 title: " Note 11 of Deep Learning: Practical Methodology "
 categories: [Machine Learning, Deep Learning]
 ---
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=default' async></script>
 
 Practical design process:
 1. Determine goals: what error metric to use and corresponding target value, both of which should be driven by the problem that the application is intended to solve.

@@ -3,8 +3,6 @@ layout: post
 title: "Note 16 of Deep Learning: Structured Probabilistic Models for Deep Learning"
 categories: [Deep Learning]
 ---
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:[['$','$']]}});</script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=default' async></script>
 
 A *structured probabilistic model* is a way of describing a probability distribution, using a graph to describe which random variables in the probability distribution interact with each other directly. The **graph** here is in the graph theory sense -- a set of vertices connected to one another by a set of edges. Thus, structured probabilistic models also refers to *probabilistic graphical models (PGM)*.
 
