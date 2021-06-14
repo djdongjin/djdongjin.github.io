@@ -1,5 +1,5 @@
 ---
-title: CMU 15-418: Parallel Computer Architecture and Programming 
+title: CMU 15-418 Parallel Computer Architecture and Programming 
 date: 2021-06-13 20:10:47 +07:00
 modified: 2021-06-13 20:10:47 +07:00
 tags: [parallel computing, c++, mooc]
