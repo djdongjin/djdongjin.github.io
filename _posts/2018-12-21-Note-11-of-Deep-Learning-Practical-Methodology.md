@@ -2,6 +2,7 @@
 layout: post
 title: " Note 11 of Deep Learning: Practical Methodology "
 categories: [Machine Learning, Deep Learning]
+comments: true
 ---
 
 Practical design process:

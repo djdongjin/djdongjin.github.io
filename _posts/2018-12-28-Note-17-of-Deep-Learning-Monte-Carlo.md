@@ -2,6 +2,7 @@
 layout: post
 title: "Note 17 of Deep Learning: Monte Carlo Methods"
 categories: [Deep Learning]
+comments: true
 ---
 
 Las Vegas algorithms and Monte Carlo algorithms are two rough categories of randomized algorithms. Las Vegas algorithms always return a precisely correct answer (or report fail), by consuming a random amount of resources; Monte Carlo algorithms return answers (by approximation) with a random amount of error, which may be reduced by expending more resources.

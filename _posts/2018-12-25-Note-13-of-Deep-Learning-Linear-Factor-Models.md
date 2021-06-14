@@ -2,6 +2,7 @@
 layout: post
 title: " Note 13 of Deep Learning: Linear Factor Models "
 categories: [Deep Learning]
+comments: true
 ---
 
 A linear factor model is defined by using a stochastic, linear decoder function that generates $x$ by adding noise to a linear transformation of $h$ which is a latent variable representing the data.

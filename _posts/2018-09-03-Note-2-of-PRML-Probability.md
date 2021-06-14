@@ -2,6 +2,7 @@
 layout: post
 title: "Note 2 of PRML: Probability Distributions"
 categories: [Deep Learning, Machine Learning, PRML, Probability]
+comments: true
 ---
 
 - **Density estimation**: model the probability distribution $p(x)$ given a finite observation set $x_1,...,x_N$.

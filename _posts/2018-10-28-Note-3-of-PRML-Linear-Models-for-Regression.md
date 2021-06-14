@@ -2,6 +2,7 @@
 layout: post
 title: "Note 3 of PRML: Linear Models for Regression"
 categories: [PRML, Machine Learning]
+comments: true
 ---
 
 > Linear models: linear functions of the adjustable **parameters** (instead of *input variables*, which is just the simplest form of linear models).

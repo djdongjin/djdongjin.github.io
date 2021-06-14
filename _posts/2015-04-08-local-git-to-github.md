@@ -2,6 +2,7 @@
 layout: post
 title: "Upload a local git repo to GitHub"
 categories: [Basics]
+comments: true
 ---
 
 

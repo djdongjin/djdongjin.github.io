@@ -2,6 +2,7 @@
 layout: post
 title: " Note 14 of Deep Learning: Autoencoders "
 categories: [Deep Learning]
+comments: true
 ---
 Autoencoder is a neural network trained to copy its input to its output. It can be seen as two parts: an encoder $h = f(x)$ that generates a latent representation, a decoder $r = g(h)$ that generates the reconstruction of the input given its latent representation.
 

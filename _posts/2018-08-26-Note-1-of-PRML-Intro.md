@@ -2,6 +2,7 @@
 layout: post
 title: "Note 1 of PRML: Intro"
 categories: [Deep Learning, Machine Learning]
+comments: true
 ---
 
 - Supervised learning: classification, regression.
