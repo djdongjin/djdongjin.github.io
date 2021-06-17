@@ -8,6 +8,9 @@ comments: true
 # image: "./shell_evolution.png"
 ---
 
+* TOC
+{:toc}
+
 # Lecture 1. Why Parallelism
 
 This is a class focusing on various of techniques of writing parallel programs. It consists of 4 labs that use different parallel strategies, including:
@@ -45,4 +48,6 @@ This course uses **speedup** to measure parallelism when P processors are used, 
 3. Massive parallel execution that causes much higher communication cost compared to computation. (e.g., 100 cores to complete a simple task). Solution: partition the task to appropriate segmentations that are executable in parallel.
 
 > In summary, we need a parallel thinking that includes *work decomposition, work assignment, and communication/syncronization management*.
+
+# Lecture 2. Instruction-Level Parallelism (ILP) - WIP
 
