@@ -1,7 +1,7 @@
 ---
 title: "Deep Learning -- Ian GoodFellow"
 layout: post
-date: 2018-08-26 20:10:47 +07:00
+date: 2018-12-21 20:10:47 +07:00
 modified: 2021-06-18 20:10:47 +07:00
 tags: [Machine Learning, Deep Learning, Book]
 comments: true
