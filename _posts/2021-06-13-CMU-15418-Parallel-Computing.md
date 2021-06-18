@@ -1,5 +1,6 @@
 ---
 title: CMU 15-418 Parallel Computer Architecture and Programming 
+layout: post
 date: 2021-06-13 20:10:47 +07:00
 modified: 2021-06-13 20:10:47 +07:00
 tags: [parallel computing, c++, mooc]
@@ -11,7 +12,7 @@ comments: true
 * TOC
 {:toc}
 
-# Lecture 1. Why Parallelism
+## Lecture 1. Why Parallelism
 
 This is a class focusing on various of techniques of writing parallel programs. It consists of 4 labs that use different parallel strategies, including:
 
@@ -49,5 +50,6 @@ This course uses **speedup** to measure parallelism when P processors are used, 
 
 > In summary, we need a parallel thinking that includes *work decomposition, work assignment, and communication/syncronization management*.
 
-# Lecture 2. Instruction-Level Parallelism (ILP) - WIP
+## Lecture 2. Instruction-Level Parallelism (ILP) - WIP
 
+## Lecture 3. Modern Multi-Core Processor

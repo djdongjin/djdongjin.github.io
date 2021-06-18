@@ -1,10 +1,11 @@
 ---
-layout: post
 title: "Upload a local git repo to GitHub"
-categories: [Basics]
+layout: post
+date: 2015-04-08 20:10:47 +07:00
+tags: [Basics]
+description: Study note for Git
 comments: true
 ---
-
 
 1. create a git repository in your GitHub
 2. create a local git repository whose name is the same with the git created in 1, and initialized by 'git init'
@@ -15,5 +16,3 @@ comments: true
 7. `git push -u origin master` to push our update
 
 After these step, next time we need to push an update, we just need to do as step 4, 5, 7, that's, add-commit-push
-
-

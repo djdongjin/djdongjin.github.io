@@ -1,9 +1,11 @@
 ---
-layout: post
 title: "Underfit & Overfit"
-categories: [Machine Learning]
+layout: post
+date: 2017-07-20 20:10:47 +07:00
+tags: [Machine Learning]
 comments: true
 ---
+
 ## Underfit & Overfit
 Before discussing underfit and overfit, we need to define two errors：**training error** and **generalization error**. Usually we use training set to train our model and then evaluate the performance of our model on a different dataset, named test set. So the error our model makes on training set is **training error**, and error on a random test set is **generalization error**.
 

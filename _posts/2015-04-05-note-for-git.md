@@ -1,7 +1,9 @@
 ---
+title: "Git"
 layout: post
-title: "Note for Git"
-categories: [Basics]
+date: 2015-04-05 20:10:47 +07:00
+tags: [Basics]
+description: Study note for Git
 comments: true
 ---
 
