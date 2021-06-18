@@ -37,7 +37,7 @@ Many metrics are available but what is more important is to *determine which per
 
 > The goal is to establish a reasonable end-to-end system as soon as possible, which can be used as a baseline.
 
-A reasonable choice of optimization method is **SGD** with momentum with a decaying learning rate. Popular decay schemes include 1) decaying linearly until reaching a fixed minimum learning rate; 2) decaying exponentially; 3) decreasing learning rate by a factor of 2-10 each time validation error plateaus. Another reasonable alternative is **Adam**. 
+A reasonable choice of optimization method is **SGD** with momentum with a decaying learning rate. Popular decay schemes include 1) decaying linearly until reaching a fixed minimum learning rate; 2) decaying exponentially; 3) decreasing learning rate by a factor of 2-10 each time validation error plateaus. Another reasonable alternative is **Adam**.
 
 **Batch normalization** may have a dramatic effect on optimization performance, especially for convolutional networks and networks with sigmoidal nonlinearities such as *sigmod* or *tanh*. Batch normalization should be introduced if optimization is likely problematic.
 
@@ -311,7 +311,7 @@ When x cannot be sampled from *p*, an alternative is to use *importance sampling
 
 ### Importance Sampling
 
-It's important to decide which part of the integrand should play the role of the probability $p(x)$ and which part should play the role of the quantity $f(x)$ whose expected value is to be estimated. But any decomposition can be rewritten as 
+It's important to decide which part of the integrand should play the role of the probability $p(x)$ and which part should play the role of the quantity $f(x)$ whose expected value is to be estimated. But any decomposition can be rewritten as
 
 $$
 p(x)f(x) = q(x)\frac{p(x)f(x)}{q(x)}
