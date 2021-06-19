@@ -34,6 +34,11 @@ Suppose we are designing a *Duck* class hierarchy, in which each type of duck ca
 1. Use inheritance: first define an abstract *Duck* class with two abstract methods (fly, quack). Then for each actual *Duck* subclass, we inherit from *Duck* and implement the two methods.
 2. Use interface: first define an abstract *Duck* class and two interfaces (Flyable, Quackable). Then for each actual *Duck* subclass, we implement the two interfaces when necessary.
 
+<figure>
+<img src="/assets/img/design_pattern/strategy_before.png" alt="Before Strategy Pattern">
+<figcaption>Class relationships without strategy pattern. Left is using inheritance; right is using interface.</figcaption>
+</figure>
+
 Both of the two designs have disadvantages, including:
 
 1. Classes are tightly-coupled: we cannot separate *Ducks* from *behaviors*. If we want to change a behavior implementation, we have to change all the client code (`Duck`) that use this behavior (duck implementations). If $n$ `Duck` classes use the behavior, we have to change it in all $n$ classes.
@@ -41,6 +46,11 @@ Both of the two designs have disadvantages, including:
 3. Behaviors are binded to a class implementation and cannot be changed at runtime: after initializing a duck object, we cannot change its behaviors.
 
 Let's see how *strategy pattern* can mitigate these issues. We know that what changes are the behaviors not ducks. So we first separate the two behaviors from ducks by defining two interfaces, `FlyBehavior` and `QuackBehavior`, each of which has a set of class implementing the behavior (Principle 1). Then, we add two objects of the interfaces to `Duck` that hold the specific behavior implementations (Principle 2 and 3). Finally, for different types of `Duck`, we just need to pass the expected behavior implementations (Principle 3).
+
+<figure>
+<img src="/assets/img/design_pattern/strategy_after.png" alt="After Strategy Pattern">
+<figcaption>Class relationships strategy pattern. We can see that client code (`Duck`) is separated from algorithms (here, behaviors) and use them via composition.</figcaption>
+</figure>
 
 Now, let's discuss how the design with `strategy pattern` resolves the disadvantages:
 
