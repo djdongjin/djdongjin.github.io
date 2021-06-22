@@ -40,7 +40,7 @@ The formal definition of **Parallel Computing**: a collecitons of processing ele
 2. These processors need to work in parallel to complete a task;
 3. We care about performance/efficiency when using parallelism.
 
-> Parallelism v.s. concurrency: the two concepts are confusing. In my understanding, parallelism means, at a moment, multiple processors (e.g. cores) are working in parallel to complete a task. Concurrency only means there are multiple tasks/threads that are running. But they are not necessarily running in parallel. For example, OS may first start Task A and then put it in background and start Task B. After B is completed, OS continue to execute Task A. They also why we need multiple processors to achieve parallelism but can achieve concurrency using one processor.
+> Parallelism v.s. concurrency: the two concepts are confusing. In my understanding, parallelism means, at a moment, multiple processors (e.g. cores) are working in parallel to complete a task(s). Concurrency only means there are multiple tasks/threads that are running. But they are not necessarily running in parallel but just interleaved. For example, OS may first start Task A and then put it in background and start Task B. After B is completed, OS continue to execute Task A.
 
 This course uses **speedup** to measure parallelism when P processors are used, which is defined as *the ratio of executing time by using 1 processor and the exectuing time by using P processors*. Some potential issues when using parallelism and solutions inlcude:
 
