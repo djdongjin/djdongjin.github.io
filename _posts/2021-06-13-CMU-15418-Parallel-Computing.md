@@ -140,3 +140,149 @@ ILP hasn't gotten large boosts recently. One reason is that superscalar scheduli
 Nowadays multicore is a more preferred choice where each core might become simpler. However, writing parallel software is still hard.
 
 ## Lecture 3. Modern Multi-Core Processor
+
+Today's lecture discusses some *thread-level* parallelism that usually involves multiple instruction streams, including **multi-core, SIMD, super-threading**.
+
+> Different from ILP in which most of the work is done by hardwards, multi-threading parallelism requires writing multi-thread softwares.
+
+This lecture uses a code example to demonstrate how it can be parallelized by these techniques.
+
+```c
+// Calculate sin(x) for N numbers starting at `x`, using Tayler expansion.
+void sinx(int N, int terms, float *x, float *result) {
+  for (int i = 0; i < N; i++) {           // outer-loop, independent between different i
+    float value = x[i];
+    float numer = x[i] * x[i] * x[i];
+    int denom = 6;  // 3!
+    int sign = -1;
+
+    for (int j = 1; j <= terms; j++) {    // inner-loop
+      value += sign * numer / demon;
+      numer *= x[i] * x[i];
+      denom *= (2 * j + 2) * (2 * j + 3);
+      sign *= -1;
+    }
+
+    result[i] = value;
+  }
+}
+```
+
+With *ILP*, the only possible parallelism is that a processor can execute multiple *instructions* by using *pipelining (in-order)* or *superscalar (OoO)*.
+
+### Multi-Core
+
+> Use increasing transistor count to add more cores to the processor.
+
+The transition from a single powerful core to multiple simple cores also leads to different hardware design strategies. In single-core processor, more transistors are used to speed up a single instruction stream (e.g. larger cache, smart OoO logic and branch predictor). Now more transistors are used to add more cores or other parallelism units (e.g., SIMD ALU).
+
+The challenge is how we can write parallel programs that can fully utilize these multi cores. One solution is using `multi-threads` in which we explicitly creates multiple threads (e.g. `pthreads`) can assign the work evenly to these threads. The disadvantage is that we need to hardcode the number of threads created, which is usually dependent on hardwares.
+
+```c
+typedef struct { int N; int terms; float* x; float* result; } my_args;
+
+void parallel_sinx(int N, int terms, float* x, float* result) {
+  pthread_t thread_id; 
+  my_args args;
+  args.N = N/2;
+  args.terms = terms; 
+  args.x = x; 
+  args.result = result;
+
+  pthread_create(&thread_id, NULL, my_thread_start, &args); // launch thread 
+  sinx(N - args.N, terms, x + args.N, result + args.N); // do work 
+  pthread_join(thread_id, NULL);
+}
+
+void my_thread_start(void* thread_arg) {
+  my_args* thread_args = (my_args*)thread_arg;
+  sinx(args->N, args->terms, args->x, args->result); // do work 
+}
+```
+
+We can also use `data-parallel expression` where we just anotate the code blocks that are data-parallel (e.g., *independent loops*) using language-specific notations and let the compiler generate parallel threaded code. The benefit is that the compiler can decide how many threads created based on the hardware that runs the program.
+
+```c
+void sinx(int N, int terms, float *x, float *result) {
+  forall (int i from 0 to N-1) {           // data-parallel expression
+    float value = x[i];
+    float numer = x[i] * x[i] * x[i];
+    int denom = 6;  // 3!
+    int sign = -1;
+
+    for (int j = 1; j <= terms; j++) {    // inner-loop
+      value += sign * numer / demon;
+      numer *= x[i] * x[i];
+      denom *= (2 * j + 2) * (2 * j + 3);
+      sign *= -1;
+    }
+
+    result[i] = value;
+  }
+}
+```
+
+One common thing is that after the work is divided and assigned to different threads, we can execute these threads in parallel on different cores.
+
+### SIMD: Single Instruction Multiple Data
+
+> Add more ALUs within a core to amortize cost/complexity of managing an instruction stream across many ALUs.
+
+*SIMD* is a technique that execute the same instruction stream in parallel on all ALUs using multiple data. The idea is that in some situations such as vector calculation or for-loop, we do the same operations (instructions) on multiple data sources. So we can just use multiple ALUs within a core (one ALU per data source) and execute this instruction stream on all data source in parallel.
+
+Similar to `data-parallel expression`, *SIMD* also uses language-specific anotations to generate parallelism code. Some examples includes AVX and CUDA.
+
+One issue of *SIMD* is *conditional execution* where the code is the same but execution not depending on the condition values (e.g., if-else statement). *SIMD* resolves the issue by using *mask*. It first calculates a mask for each data source based on the condition expression. Then it executes both `if` and `else` but disables the effect of one of them, depending on the mask value.
+
+> Mask hurts parallelism performance since it wastes computations.
+
+<figure>
+<img src="/assets/img/15418/3_SIMD_mask.jpg" alt="Mask in SIMD">
+<figcaption>SIMD handles conditional execution by using mask.</figcaption>
+</figure>
+
+**Coherent execution (instruction stream coherence)**: same instruction sequence applies to all elements operated upon simultaneously.
+
+> Coherent execution is required for efficient SIMD implementation, not required for multi-core parallelization. It makes sense because each core has its own fetch/decode units while SIMD only requires multiple ALUs within a core.
+
+#### SIMD on Modern Hardwares
+
+CPUs mainly use **explicit SIMD** where *SIMD* parallelization is performed at compile time and instructions are generated by compiler. That means you can check the progrm to see which *SIMD* instruction are used. Some CPU SIMDs includes:
+
+As a comparision, GPUs use **implicit SIMD** where the compiler only generates a scalar binary (scalar instructions, no SIMD yet). Then the hardware executes the same scalar instructions simultaneously from multiple data source on SIMD ALUs. The programmer only needs to define SIMD by using a data-parallel interface (e.g., `execute(my_func, N);`).
+
+### Hyperthreading (Simultaneous Multi-Threading, SMT)
+
+> Perform multi-threading using superscalar hardware within a core: fetch/decode instructions from different threads and execute them OoO within a core.
+
+### Accessing memory
+
+**Memory latency**: amount of time for a memory request (e.g., 100 cycles); **memory bandwidth**: rate at which the memory can provide data to a processor (e.g., 20 GB/s).
+
+**Caches** can reduce latency by reducing stall lengths (faster access). **Prefetching** (discussed in lecture 2 - pipelining) can hide latency by utilizing some stalls to prefetch instructions. **Multi-threading** also hides lantency by interleave processing multiple threads.
+
+> With thread-level parallelism, we are moving to a *throughput-oriented* system: the goal is to increase overall system throughput when running multiple threads, althought individual work might need more time to complete.
+
+**Bandwidth-limited**: in throughput-optimized systems, if processors request data at a too high rate (GPU), the memory system cannot keep up. Some mitigations include:
+
+1. Reuse data previously loaded by the same thread.
+2. Share data across threads.
+3. Request data less often (instead, do more arithmetic).
+
+> Arithmetic intensity: ratio of math operations to data access operations in an instruction stream.
+
+### Summary
+
+This lecture introduces three parallelism techniques:
+
+* Multi-core: thread-level parallelism, run one thread per core in parallel.
+  * Require multi-core processor.
+* SIMD: execute the same instruction stream on multiple data sources in parallel within a core.
+  * Require multiple ALUs within a core.
+* Hyperthreading: run multiple threads using superscalar harware within a core.
+  * Require OoO superscalar hardware.
+
+<figure>
+<img src="/assets/img/15418/3_combine_example.jpg" alt="Multi-core, SIMD, hyperthreading CPU">
+<figcaption>This CPU combines all techniques together. It has four cores and can execute four threads in parallel (multi-core). On each core, it executes two instructions per clock (superscalar, 2 fetch/decode) from one instruction stream. When a core face stall, it can switch to execute the other thread/instruction stream (hyperthreading, 2 exec context). Meanwhile, it has 8 ALUs per core and thus can do SIMD parallelization.</figcaption>
+</figure>
