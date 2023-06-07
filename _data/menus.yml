@@ -10,6 +10,10 @@
   url: /tags/
   external: false
 
+- title: weekly
+  url: /weekly/
+  external: false 
+
 - title: about
   url: /about/
   external: false
